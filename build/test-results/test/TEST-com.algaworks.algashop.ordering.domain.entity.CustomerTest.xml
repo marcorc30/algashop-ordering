@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.domain.entity.CustomerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-07-10T00:42:09.673Z" hostname="marco-Inspiron-3583" time="0.069">
+  <properties/>
+  <testcase name="dado_cliente_nao_arquivado_quando_arquivar_deve_anonimizar()" classname="com.algaworks.algashop.ordering.domain.entity.CustomerTest" time="0.055"/>
+  <testcase name="dado_email_invalido_quando_criar_deve_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.entity.CustomerTest" time="0.004"/>
+  <testcase name="dado_email_invalido_quando_alterar_deve_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.entity.CustomerTest" time="0.002"/>
+  <testcase name="dado_cliente_arquivado_entao_nao_pode_arquivar_e_nem_alterar()" classname="com.algaworks.algashop.ordering.domain.entity.CustomerTest" time="0.003"/>
+  <testcase name="dado_cliente_arquivado_entao_nao_pode_alterar()" classname="com.algaworks.algashop.ordering.domain.entity.CustomerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
