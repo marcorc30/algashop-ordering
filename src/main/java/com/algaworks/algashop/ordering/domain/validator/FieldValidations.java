@@ -6,8 +6,25 @@ import java.util.Objects;
 
 public class FieldValidations {
 
-    public FieldValidations(){
+    public FieldValidations(){}
 
+
+    public static void requiredNonBlanckAndNonNull(String value){
+        requiredNonBlanckAndNonNull(value, "");
+    }
+
+    public static void requiredNonBlanckAndNonNull(String value, String message){
+        Objects.requireNonNull(value);
+        if (value.isBlank()){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void requiredNonBlanck(String value){
+//        Objects.requireNonNull(value);
+        if (value.isBlank()){
+            throw new IllegalArgumentException(value);
+        }
     }
 
     public static void requiresValidEmail(String email){
