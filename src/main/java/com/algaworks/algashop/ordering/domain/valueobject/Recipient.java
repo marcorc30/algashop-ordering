@@ -5,14 +5,11 @@ import lombok.Builder;
 import java.util.Objects;
 
 @Builder
-public record BillingInfo(FullName fullName, Document document, Phone phone, Address address ) {
+public record Recipient(FullName fullName, Document document, Phone phone) {
 
-    public BillingInfo {
-
+    public Recipient {
         Objects.requireNonNull(fullName);
         Objects.requireNonNull(document);
         Objects.requireNonNull(phone);
-        Objects.requireNonNull(address);
-
     }
 }

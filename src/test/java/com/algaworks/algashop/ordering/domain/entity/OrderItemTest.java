@@ -2,6 +2,7 @@ package com.algaworks.algashop.ordering.domain.entity;
 
 import com.algaworks.algashop.ordering.domain.utility.IdGenerator;
 import com.algaworks.algashop.ordering.domain.valueobject.Money;
+import com.algaworks.algashop.ordering.domain.valueobject.Product;
 import com.algaworks.algashop.ordering.domain.valueobject.ProductName;
 import com.algaworks.algashop.ordering.domain.valueobject.Quantity;
 import com.algaworks.algashop.ordering.domain.valueobject.id.OrderId;
@@ -28,12 +29,11 @@ class OrderItemTest {
 
     @Test
     void newOrderId(){
+        Product product = ProductTestDataBuilder.aProduct().build();
         OrderItem.brandNew()
                 .orderId(new OrderId())
+                .product(product)
                 .quantity(new Quantity(10))
-                .productId(new ProductId())
-                .price(new Money("10.0"))
-                .productName(new ProductName("produto b"))
                 .build();
     }
 

@@ -1,6 +1,7 @@
 package com.algaworks.algashop.ordering.domain.entity;
 
 import com.algaworks.algashop.ordering.domain.valueobject.Money;
+import com.algaworks.algashop.ordering.domain.valueobject.Product;
 import com.algaworks.algashop.ordering.domain.valueobject.ProductName;
 import com.algaworks.algashop.ordering.domain.valueobject.Quantity;
 import com.algaworks.algashop.ordering.domain.valueobject.id.OrderId;
@@ -25,6 +26,8 @@ public class OrderItem {
 
     private Money totalAmount;
 
+    private Product product;
+
     @Builder(builderClassName = "ExistingOrderItemBuild", builderMethodName = "existing")
     public OrderItem(OrderItemId id, OrderId orderId, ProductId productId,
                      ProductName productName, Money price, Quantity quantity,
@@ -39,17 +42,25 @@ public class OrderItem {
     }
 
     @Builder(builderClassName = "BrandNewOrderItemBuild", builderMethodName = "brandNew")
-    private static OrderItem createBrandNew(OrderId orderId, ProductId productId,
-                                 ProductName productName, Money price, Quantity quantity){
+    private static OrderItem createBrandNew(OrderId orderId, Product product, Quantity quantity){
+        Objects.requireNonNull(orderId);
+        Objects.requireNonNull(product);
+        Objects.requireNonNull(quantity);
 
         return new OrderItem(
                 new OrderItemId(),
                 orderId,
-                productId,
-                productName,
-                price,
+                product.id(),
+                product.name(),
+                product.price(),
                 quantity,
                 Money.ZERO);
+    }
+
+    void changeQuantity(Quantity quantity) {
+        Objects.requireNonNull(quantity);
+        this.setQuantity(quantity);
+        this.recalculateTotals();
     }
 
     public OrderItemId id() {
@@ -115,6 +126,10 @@ public class OrderItem {
         this.totalAmount = totalAmount;
     }
 
+    private void recalculateTotals(){
+        this.setTotalAmount(this.price().multiply(this.quantity()));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -126,4 +141,6 @@ public class OrderItem {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+
 }

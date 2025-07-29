@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.entity.OrderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-23T12:08:03.666Z" hostname="marco-Inspiron-3583" time="0.054">
-  <properties/>
-  <testcase name="dado_um_pedido_alterar_dados_entrega_com_data_passada_entao_gerar_excecao()" classname="com.algaworks.algashop.ordering.domain.entity.OrderTest" time="0.054"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

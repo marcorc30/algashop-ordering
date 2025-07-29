@@ -3,7 +3,7 @@ package com.algaworks.algashop.ordering.domain.valueobject;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
 
 class ShippingInfoTest {
 
@@ -11,7 +11,7 @@ class ShippingInfoTest {
     void quando_criar_shipping_info_entao_se_conter_valor_null_lancar_excecao(){
 
         Assertions.assertThatNullPointerException()
-                .isThrownBy(() -> ShippingInfo.builder()
+                .isThrownBy(() -> Shipping.builder()
                         .address(Address.builder()
                                 .number("54545")
                                 .state("teste")
@@ -20,15 +20,17 @@ class ShippingInfoTest {
                                 .street("sdfsdfs")
                                 .zipCode(new ZipCode("12345"))
                                 .build())
-                        .phone(null)
-                        .document(new Document("555455"))
-                        .fullName(new FullName("teste","teste"))
+                        .recipient(Recipient.builder()
+                                .phone(null)
+                                .document(new Document("555455"))
+                                .fullName(new FullName("teste","teste"))
+                                .build())
                         .build());
     }
 
     @Test
     void quando_criar_shipping_info_entao_retornar_valores_passados(){
-        ShippingInfo build = ShippingInfo.builder()
+        Shipping build = Shipping.builder()
                 .address(Address.builder()
                         .number("54545")
                         .state("teste")
@@ -38,12 +40,24 @@ class ShippingInfoTest {
                         .zipCode(new ZipCode("12345"))
                         .neighborhood("65465466")
                         .build())
-                .phone(new Phone("5544555"))
-                .document(new Document("555455"))
-                .fullName(new FullName("teste", "teste"))
+                .cost(new Money("10.0"))
+                .expectedDate(LocalDate.now())
+                .address(Address.builder()
+                        .number("54545")
+                        .state("teste")
+                        .city("teste")
+                        .complement("sfdsfsdfs")
+                        .street("sdfsdfs")
+                        .zipCode(new ZipCode("12345"))
+                        .build())
+                .recipient(Recipient.builder()
+                        .phone(null)
+                        .document(new Document("555455"))
+                        .fullName(new FullName("teste","teste"))
+                        .build())
                 .build();
 
-        Assertions.assertThat(build.phone().toString()).isEqualTo("5544555");
+        Assertions.assertThat(build.recipient().phone().toString()).isEqualTo("5544555");
     }
 
 }
