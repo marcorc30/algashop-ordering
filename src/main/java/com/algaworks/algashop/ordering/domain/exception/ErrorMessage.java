@@ -29,4 +29,5 @@ public class ErrorMessage {
     public static final String ERROR_PRODUCT_IS_OUT_OF_STOCK = "Product %s is out of stock";
     public static final String ERROR_ORDER_CANNOT_BE_EDITED = "Order %s with status %s cannot be edited";
     public static final String ERROR_ODER_CANNOT_BE_PAID = "Order %s cannot be paid";
+    public static final String ERROR_ORDER_CANNOT_BE_CANCELED = "Order %s cannot be canceled";
 }

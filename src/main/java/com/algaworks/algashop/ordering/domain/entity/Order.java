@@ -236,6 +236,19 @@ public class Order {
 
     }
 
+    public void cancel(){
+        if (isCanceled()){
+            throw new OrderCannotBeCanceledException(this.id());
+        }
+
+        setCanceledAt(OffsetDateTime.now());
+        changeStatus(OrderStatus.CANCELED);
+    }
+
+    public boolean isCanceled(){
+        return OrderStatus.CANCELED.equals(this.status());
+    }
+
     private void verifyIfChangeable(){
         if (!this.isDraft()){
             throw new OrderCannotBeEditedException(this.id(), this.status());
