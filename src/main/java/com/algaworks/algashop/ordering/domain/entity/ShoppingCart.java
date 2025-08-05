@@ -11,10 +11,7 @@ import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class ShoppingCart {
 
@@ -36,20 +33,20 @@ public class ShoppingCart {
         setItems(items);
     }
 
-    public static ShoppingCart startShopping(ShoppingCartId id){
+    public static ShoppingCart startShopping(CustomerId customerId){
         return new ShoppingCart(
-                id,
-                null,
-                null,
-                null,
-                null,
+                new ShoppingCartId(),
+                customerId,
+                Money.ZERO,
+                Quantity.ZER0,
+                OffsetDateTime.now(),
                 new HashSet<>()
         );
     }
 
     public void recalculateTotals(){
 
-        BigDecimal totalAmount = this.items.stream().map(i -> i.totalAmount().value()).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totalAmount = this.items.stream().map(i -> i.price().value()).reduce(BigDecimal.ZERO, BigDecimal::add);
         Integer totalQuantity = this.items.stream().map(i -> i.quantity().value()).reduce(0, Integer::sum);
 
         setTotalAmount(new Money(totalAmount));
@@ -109,7 +106,9 @@ public class ShoppingCart {
 
     public void empty(){
         items.clear();
-        recalculateTotals();
+        this.totalAmount = Money.ZERO;
+        this.totalItens = Quantity.ZER0;
+//        recalculateTotals();
     }
 
     public void addItem(Product product, Quantity quantity){
@@ -117,12 +116,19 @@ public class ShoppingCart {
         Objects.requireNonNull(product);
         Objects.requireNonNull(quantity);
 
+        product.checkOutOfStock();
+
+
         ShoppingCartItem shoppingCartItem = ShoppingCartItem.brandNew()
                 .id(new ShoppingCartItemId())
                 .productId(new ProductId())
                 .productName(product.name())
                 .price(product.price())
+                .quantity(quantity)
                 .build();
+
+        searchItemByProduct(product.id())
+                .ifPresentOrElse(i -> updateItem(i, product, quantity), () -> insertItem(shoppingCartItem));
 
         this.items.add(shoppingCartItem);
 
@@ -130,20 +136,64 @@ public class ShoppingCart {
 
     }
 
+    private void insertItem(ShoppingCartItem shoppingCartItem) {
+        this.items.add(shoppingCartItem);
+    }
+
+    private void updateItem(ShoppingCartItem shoppingCartItem, Product product, Quantity quantity) {
+        shoppingCartItem.refresh(product);
+        shoppingCartItem.changeQuantity(shoppingCartItem.quantity().add(quantity));
+    }
+
+    public Optional<ShoppingCartItem> searchItemByProduct(ProductId productId){
+
+        Objects.requireNonNull(productId);
+
+        return this.items
+                .stream()
+                .filter(s -> s.productId().equals(productId))
+                .findFirst();
+
+
+
+    }
+
     public void removeItem(ShoppingCartItemId shoppingCartItemId){
 
-        ShoppingCartItem shoppingCartItem = findItem(shoppingCartItemId);
-        items.remove(shoppingCartItem);
+        ShoppingCartItem shoppingCartItem = this.findItem(shoppingCartItemId);
+        this.items.remove(shoppingCartItem);
 
         recalculateTotals();
 
     }
 
+    public void refreshItem(Product product){
+        Objects.requireNonNull(product);
+
+        ShoppingCartItem shoppingCartItem = findItem(product.id());
+        shoppingCartItem.refresh(product);
+        this.recalculateTotals();
+
+
+
+//        product.
+
+    }
+
     public ShoppingCartItem findItem(ShoppingCartItemId shoppingCartItemId){
-        return this.items.stream()
+        return this.items
+                .stream()
                 .filter(i -> i.id().equals(shoppingCartItemId))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException());
+
+    }
+
+    public ShoppingCartItem findItem(ProductId productId){
+        return  this.items
+                .stream()
+                .filter(i -> i.productId().equals(productId)).findAny().orElseThrow(() -> new IllegalArgumentException());
+
 
     }
 

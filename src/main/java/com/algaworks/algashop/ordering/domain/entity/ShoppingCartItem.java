@@ -1,12 +1,15 @@
 package com.algaworks.algashop.ordering.domain.entity;
 
 import com.algaworks.algashop.ordering.domain.valueobject.Money;
+import com.algaworks.algashop.ordering.domain.valueobject.Product;
 import com.algaworks.algashop.ordering.domain.valueobject.ProductName;
 import com.algaworks.algashop.ordering.domain.valueobject.Quantity;
 import com.algaworks.algashop.ordering.domain.valueobject.id.ProductId;
 import com.algaworks.algashop.ordering.domain.valueobject.id.ShoppingCartId;
 import com.algaworks.algashop.ordering.domain.valueobject.id.ShoppingCartItemId;
 import lombok.Builder;
+
+import java.util.Objects;
 
 public class ShoppingCartItem {
 
@@ -35,18 +38,11 @@ public class ShoppingCartItem {
     }
 
     @Builder(builderClassName = "BrandNewShoppingItemBuilder", builderMethodName = "brandNew")
-    private static ShoppingCartItem createBrandNew(ShoppingCartItemId id, ShoppingCartId shoppingCartId, ProductId productId, ProductName productName, Money price, Quantity quantity){
+    private ShoppingCartItem(ShoppingCartItemId id, ShoppingCartId shoppingCartId, ProductId productId,
+                                                   ProductName productName, Money price, Quantity quantity, Boolean available){
 
-        return new ShoppingCartItem(
-          id,
-          shoppingCartId,
-          productId,
-          productName,
-          price,
-          quantity,
-          Money.ZERO,
-          false
-        );
+        this(new ShoppingCartItemId(), shoppingCartId, productId, productName, price, quantity, Money.ZERO, available);
+
 
     }
 
@@ -113,5 +109,36 @@ public class ShoppingCartItem {
     private void setAvailable(Boolean available) {
         this.available = available;
     }
+
+    public void refresh(Product product){
+        Objects.requireNonNull(product);
+        Objects.requireNonNull(product.id());
+
+        if (product.id().equals(this.productId)){
+            throw new IllegalArgumentException();
+        }
+
+        this.setPrice(product.price());
+        this.setAvailable(product.inStock());
+        this.setProductName(product.name());
+        this.recalculateTotals();
+
+    }
+
+    public void changeQuantity(Quantity quantity){
+
+        Objects.requireNonNull(quantity);
+
+        this.setQuantity(quantity);
+        this.recalculateTotals();
+
+    }
+
+    private void recalculateTotals() {
+        this.setTotalAmount(this.price.multiply(this.quantity));
+
+    }
+
+
 
 }

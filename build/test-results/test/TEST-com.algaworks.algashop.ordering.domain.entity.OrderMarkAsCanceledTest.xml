@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.entity.OrderMarkAsCanceledTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-30T18:54:37.193Z" hostname="marco-Inspiron-3583" time="0.062">
-  <properties/>
-  <testcase name="dado_um_pedido_cancelado_quando_tentar_cancelar_novamente_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.entity.OrderMarkAsCanceledTest" time="0.062"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
