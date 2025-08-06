@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-08-06T00:29:41.897Z" hostname="marco-Inspiron-3583" time="0.112">
+  <properties/>
+  <testcase name="dado_um_carrinho_quando_incluir_mesmo_produto_duas_vezes_atualizar_valores()" classname="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" time="0.086"/>
+  <testcase name="dado_um_carrinho_quando_esvaziar_os_items_entao_validar_valores()" classname="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" time="0.003"/>
+  <testcase name="dado_um_carrinho_quando_adicionar_dois_produtos_entao_atualizar_valores()" classname="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" time="0.002"/>
+  <testcase name="dado_um_carrinho_quando_adicionar_produto_sem_estoque_entao_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" time="0.011"/>
+  <testcase name="dado_um_carrinho_quando_excluir_item_inexistente_entao_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" time="0.002"/>
+  <testcase name="dado_a_criacao_de_carrinho_vazio_entao_conferir_valores_e_quantidades_se_estao_zerados()" classname="com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
