@@ -49,11 +49,13 @@ class ShippingInfoTest {
                         .complement("sfdsfsdfs")
                         .street("sdfsdfs")
                         .zipCode(new ZipCode("12345"))
+                        .neighborhood("teste")
                         .build())
                 .recipient(Recipient.builder()
                         .phone(null)
                         .document(new Document("555455"))
                         .fullName(new FullName("teste","teste"))
+                        .phone(new Phone("5544555"))
                         .build())
                 .build();
 

@@ -46,6 +46,7 @@ public class CustomerTestDataBuilder {
                 .email(new Email("marco@email.com"))
                 .phone(new Phone("55666656"))
                 .document(new Document("65665466545"))
+                .loyaltyPoints(LoyaltPoints.ZERO)
                 .address(Address.builder()
                         .street("teste")
                         .city("teste")

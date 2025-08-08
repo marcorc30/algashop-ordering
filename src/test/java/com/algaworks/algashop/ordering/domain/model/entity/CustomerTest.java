@@ -55,7 +55,9 @@ class CustomerTest {
 
     @Test
     void dado_cliente_arquivado_entao_nao_pode_arquivar_e_nem_alterar(){
-        Customer customer = CustomerTestDataBuilder.existingAnonymyzedCustomer().build();
+        Customer customer = CustomerTestDataBuilder.existingAnonymyzedCustomer()
+                .archived(true)
+                .build();
 
 
         Assertions.assertThatExceptionOfType(CustomerArchivedException.class)

@@ -30,7 +30,7 @@ Observacoes
 
  */
 
-public class Customer {
+public class Customer implements AggregateRoot<CustomerId>{
 
     private CustomerId id;
     private FullName fullName;
