@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-11T00:31:32.974Z" hostname="marco-Inspiron-3583" time="0.07">
+  <properties/>
+  <testcase name="convert_domain_to_entity()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" time="0.07"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
