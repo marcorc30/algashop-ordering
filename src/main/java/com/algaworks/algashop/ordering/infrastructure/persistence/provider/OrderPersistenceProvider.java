@@ -43,11 +43,8 @@ public class OrderPersistenceProvider implements Orders {
 
     @Override
     public void add(Order aggregateRoot) {
-
         OrderPersistenceEntity persistenceEntity = orderPersistenceEntityAssembler.fromDomain(aggregateRoot);
-
         orderPersistenceEntityRepository.saveAndFlush(persistenceEntity);
-
     }
 
     @Override

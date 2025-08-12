@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassemblerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-12T00:22:48.339Z" hostname="marco-Inspiron-3583" time="0.071">
+  <properties/>
+  <testcase name="convertPersistenceModelToDomainModel()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassemblerTest" time="0.071"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
