@@ -5,8 +5,10 @@ import com.algaworks.algashop.ordering.domain.model.repository.Orders;
 import com.algaworks.algashop.ordering.domain.model.valueobject.Money;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.OrderId;
 import com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssembler;
+import com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.repository.OrderPersistenceEntityRepository;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,17 +25,30 @@ public class OrderPersistenceProvider implements Orders {
     private final OrderPersistenceEntityRepository orderPersistenceEntityRepository;
 
     private final OrderPersistenceEntityAssembler orderPersistenceEntityAssembler;
+    private final OrderPersistenceEntityDisassembler orderPersistenceEntityDisassembler;
+
+    private final EntityManager entityManager;
 
     @Autowired
-    public OrderPersistenceProvider(OrderPersistenceEntityRepository orderPersistenceEntityRepository, OrderPersistenceEntityAssembler orderPersistenceEntityAssembler) {
+    public OrderPersistenceProvider(OrderPersistenceEntityRepository orderPersistenceEntityRepository, OrderPersistenceEntityAssembler orderPersistenceEntityAssembler, OrderPersistenceEntityDisassembler orderPersistenceEntityDisassembler, EntityManager entityManager) {
         this.orderPersistenceEntityRepository = orderPersistenceEntityRepository;
         this.orderPersistenceEntityAssembler = orderPersistenceEntityAssembler;
+        this.orderPersistenceEntityDisassembler = orderPersistenceEntityDisassembler;
+        this.entityManager = entityManager;
     }
 
 
     @Override
     public Optional<Order> ofId(OrderId orderId) {
-        return Optional.empty();
+        Optional<OrderPersistenceEntity> orderPersistenceEntity = orderPersistenceEntityRepository.findById(orderId.value().toLong());
+
+        Optional<Order> order = orderPersistenceEntity
+                .map((orderPersistence) -> orderPersistenceEntityDisassembler
+                        .toDomainEntity(orderPersistence));
+
+        Order domainEntity = orderPersistenceEntityDisassembler.toDomainEntity(orderPersistenceEntity.get());
+
+        return order;
     }
 
     @Override
@@ -43,10 +58,40 @@ public class OrderPersistenceProvider implements Orders {
 
     @Override
     public void add(Order aggregateRoot) {
-        OrderPersistenceEntity persistenceEntity = orderPersistenceEntityAssembler.fromDomain(aggregateRoot);
-        orderPersistenceEntityRepository.saveAndFlush(persistenceEntity);
+        long orderId = aggregateRoot.id().value().toLong();
+
+        orderPersistenceEntityRepository.findById(orderId).ifPresentOrElse(
+                (persistenceEntity) -> {
+                    update(aggregateRoot, persistenceEntity);
+                },
+                () -> {
+                    insert(aggregateRoot);
+                }
+
+
+        );
+
     }
 
+    private void update(Order aggregateRoot, OrderPersistenceEntity persistenceEntity) {
+        persistenceEntity = orderPersistenceEntityAssembler.merge(persistenceEntity, aggregateRoot);
+        entityManager.detach(persistenceEntity);
+        persistenceEntity = orderPersistenceEntityRepository.saveAndFlush(persistenceEntity);
+        aggregateRoot.setVersion(persistenceEntity.getVersion());
+    }
+
+
+    private void insert(Order aggregateRoot){
+        OrderPersistenceEntity persistenceEntity = orderPersistenceEntityAssembler.fromDomain(aggregateRoot);
+        orderPersistenceEntityRepository.saveAndFlush(persistenceEntity);
+
+    }
+    
+    
+    
+    
+    
+    
     @Override
     public int count() {
         return 0;

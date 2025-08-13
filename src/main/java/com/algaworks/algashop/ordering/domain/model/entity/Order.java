@@ -33,16 +33,18 @@ public class Order implements AggregateRoot<OrderId>{
     private OrderStatus status;
     private PaymentMethod paymentMethod;
 
-
     private Set<OrderItem> items;
 
+    private Long version;
+
     @Builder(builderClassName = "ExistingOrderBuilder",builderMethodName = "existing")
-    private Order(OrderId id, CustomerId customerId, Money totalAmount,
+    private Order(OrderId id, Long version, CustomerId customerId, Money totalAmount,
                   Quantity quantity, OffsetDateTime placedAt, OffsetDateTime paidAt,
                   OffsetDateTime canceledAt, OffsetDateTime readyAt, Billing billing,
                   Shipping shipping, OrderStatus status, PaymentMethod paymentMethod,
                   Set<OrderItem> items) {
         this.setId(id);
+        this.setVersion(version);
         this.setCustomerId(customerId);
         this.setTotalAmount(totalAmount);
         this.setQuantity(quantity);
@@ -60,6 +62,7 @@ public class Order implements AggregateRoot<OrderId>{
     public static Order draft(CustomerId customerId){
        return new Order(
                new OrderId(),
+               null,
                customerId,
                Money.ZERO,
                Quantity.ZER0,
@@ -214,6 +217,9 @@ public class Order implements AggregateRoot<OrderId>{
         return OrderStatus.PLACED.equals(this.status());
     }
 
+    public boolean isPaid(){
+        return OrderStatus.PAID.equals(this.status);
+    }
 
     public void addItem(Product product, Quantity quantity){
 
@@ -389,8 +395,13 @@ public class Order implements AggregateRoot<OrderId>{
         this.items = items;
     }
 
+    public Long version() {
+        return version;
+    }
 
-
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     @Override
     public boolean equals(Object o) {

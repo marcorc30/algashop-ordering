@@ -15,7 +15,7 @@ import java.util.HashSet;
 @Component
 public class OrderPersistenceEntityDisassembler {
 
-    public Order toDomainModel(OrderPersistenceEntity persistenceEntity){
+    public Order toDomainEntity(OrderPersistenceEntity persistenceEntity){
 
         return Order.existing()
                 .id(new OrderId(persistenceEntity.getId()))
@@ -29,6 +29,7 @@ public class OrderPersistenceEntityDisassembler {
                 .canceledAt(persistenceEntity.getCanceledAt())
                 .readyAt(persistenceEntity.getReadyAt())
                 .items(new HashSet<>())
+                .version(persistenceEntity.getVersion())
                 .build();
 
     }

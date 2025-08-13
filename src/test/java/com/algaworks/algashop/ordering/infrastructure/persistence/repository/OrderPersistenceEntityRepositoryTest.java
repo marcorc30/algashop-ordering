@@ -1,6 +1,7 @@
 package com.algaworks.algashop.ordering.infrastructure.persistence.repository;
 
 import com.algaworks.algashop.ordering.domain.model.utility.IdGenerator;
+import com.algaworks.algashop.ordering.infrastructure.persistence.config.SpringDataAuditingConfig;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntityTestDataBuilder;
 import org.assertj.core.api.Assertions;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -23,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //testa os componentes de peristencia de forma isolada, não carregando todo o contexto do ambiente
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@Import(SpringDataAuditingConfig.class)
 class OrderPersistenceEntityRepositoryTest {
 
 //    @Autowired
@@ -71,6 +74,19 @@ class OrderPersistenceEntityRepositoryTest {
         Optional<OrderPersistenceEntity> orderOptional = orderPersistenceEntityRepository.findById(id);
 
         Assertions.assertThat(orderOptional).isPresent();
+
+
+    }
+
+    @Test
+    public void shouldPersistAndSaveAudit(){
+        OrderPersistenceEntity orderPersistenceEntity = OrderPersistenceEntityTestDataBuilder.existingOrder().build();
+        orderPersistenceEntity = orderPersistenceEntityRepository.saveAndFlush(orderPersistenceEntity);
+
+
+        Assertions.assertThat(orderPersistenceEntity.getCreateByUserId()).isNotNull();
+        Assertions.assertThat(orderPersistenceEntity.getLastModifiedAt()).isNotNull();
+        Assertions.assertThat(orderPersistenceEntity.getLastModifiedByUserId()).isNotNull();
 
 
     }

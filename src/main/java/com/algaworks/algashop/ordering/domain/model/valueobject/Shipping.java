@@ -6,7 +6,10 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Builder(toBuilder = true)
-public record Shipping(Money cost, LocalDate expectedDate, Recipient recipient, Address address) {
+public record Shipping(Money cost,
+                       LocalDate expectedDate,
+                       Recipient recipient,
+                       Address address) {
 
 
     public Shipping {

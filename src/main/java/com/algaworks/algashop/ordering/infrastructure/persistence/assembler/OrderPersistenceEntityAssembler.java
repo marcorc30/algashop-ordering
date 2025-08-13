@@ -23,6 +23,7 @@ public class OrderPersistenceEntityAssembler {
         orderEntity.setPaidAt(orderDomain.paidAt());
         orderEntity.setCanceledAt(orderDomain.canceledAt());
         orderEntity.setReadyAt(orderDomain.readyAt());
+        orderEntity.setVersion(orderDomain.version());
 
         return orderEntity;
 

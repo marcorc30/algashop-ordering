@@ -7,25 +7,18 @@ import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPe
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class OrderPersistenceEntityDisassemblerTest {
 
     OrderPersistenceEntityDisassembler disassembler = new OrderPersistenceEntityDisassembler();
 
     @Test
-    void convertPersistenceModelToDomainModel(){
-
+    void convertPersistenceModelToDomainEntity(){
         OrderPersistenceEntity persistenceEntity = OrderPersistenceEntityTestDataBuilder.existingOrder().build();
+        Order domainEntity = disassembler.toDomainEntity(persistenceEntity);
 
-        Order domainModel = disassembler.toDomainModel(persistenceEntity);
-
-        Assertions.assertThat(domainModel.id()).isEqualTo(new OrderId(persistenceEntity.getId()));
-
+        Assertions.assertThat(domainEntity).satisfies(
+                s -> Assertions.assertThat(s.id()).isEqualTo(new OrderId(persistenceEntity.getId())),
+                s -> Assertions.assertThat(s.status().name()).isEqualTo(persistenceEntity.getStatus())
+        );
     }
-
 }
