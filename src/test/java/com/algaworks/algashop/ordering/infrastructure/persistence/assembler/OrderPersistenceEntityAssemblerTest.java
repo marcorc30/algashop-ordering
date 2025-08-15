@@ -15,11 +15,6 @@ class OrderPersistenceEntityAssemblerTest {
 
     private final OrderPersistenceEntityAssembler assembler = new OrderPersistenceEntityAssembler();
 
-//    @Autowired
-//    OrderPersistenceEntityAssemblerTest(OrderPersistenceEntityAssembler assembler) {
-//        this.assembler = assembler;
-//    }
-
     @Test
     void convert_domain_to_entity(){
 
@@ -29,6 +24,8 @@ class OrderPersistenceEntityAssemblerTest {
 
         Assertions.assertThat(order.id().value().toLong()).isEqualTo(orderPersistence.getId());
         Assertions.assertThat(order.paymentMethod().name()).isEqualTo(orderPersistence.getPaymentMethod());
+        Assertions.assertThat(order.billing().email().value()).isEqualTo(orderPersistence.getBilling().getEmail());
+        Assertions.assertThat(order.billing().document().value()).isEqualTo(orderPersistence.getBilling().getDocument());
 
 
     }
