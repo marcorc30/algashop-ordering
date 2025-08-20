@@ -11,6 +11,7 @@ import com.algaworks.algashop.ordering.infrastructure.persistence.repository.Ord
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ Delega as chamdas para o spring data
  */
 
 @Component
+@Transactional(readOnly = true)
 public class OrderPersistenceProvider implements Orders {
 
     private final OrderPersistenceEntityRepository orderPersistenceEntityRepository;
@@ -53,10 +55,16 @@ public class OrderPersistenceProvider implements Orders {
 
     @Override
     public boolean exists(OrderId orderId) {
-        return false;
+        return orderPersistenceEntityRepository.existsById(orderId.value().toLong());
     }
 
     @Override
+    public long count() {
+        return orderPersistenceEntityRepository.count();
+    }
+
+    @Override
+    @Transactional(readOnly = false)
     public void add(Order aggregateRoot) {
         long orderId = aggregateRoot.id().value().toLong();
 
@@ -87,13 +95,4 @@ public class OrderPersistenceProvider implements Orders {
 
     }
     
-    
-    
-    
-    
-    
-    @Override
-    public int count() {
-        return 0;
-    }
 }

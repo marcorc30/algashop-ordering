@@ -85,7 +85,7 @@ class OrderTest {
         OrderItem orderItem = order.items().iterator().next();
 
         Assertions.assertWith(orderItem,
-                (i) -> Assertions.assertThat(orderItem.productName()).isEqualTo(new ProductName("produto teste")),
+                (i) -> Assertions.assertThat(orderItem.productName()).isEqualTo(new ProductName("Notebook X11")),
                 (i) -> Assertions.assertThat(orderItem.quantity()).isEqualTo(new Quantity(10)),
                 (i) -> Assertions.assertThat(orderItem.orderId()).isNotNull()
         );
@@ -253,7 +253,7 @@ class OrderTest {
         order.changeItemQuantity(item.id(), new Quantity(20));
 
         Assertions.assertThat(item.quantity()).isEqualTo(new Quantity(20));
-        Assertions.assertThat(order.totalAmount()).isEqualTo(new Money("200.00"));
+        Assertions.assertThat(order.totalAmount()).isEqualTo(new Money("60000.00"));
 
 
     }

@@ -1,13 +1,23 @@
 package com.algaworks.algashop.ordering.infrastructure.persistence.assembler;
 
 import com.algaworks.algashop.ordering.domain.model.entity.Order;
+import com.algaworks.algashop.ordering.domain.model.entity.OrderItem;
 import com.algaworks.algashop.ordering.domain.model.valueobject.*;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.AddressEmbeddable;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.BillingEmbeddable;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.RecipientEmbedabble;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.ShippingEmbeddable;
+import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderItemPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+/*
+Domain -> Persistence
+ */
 
 @Component
 public class OrderPersistenceEntityAssembler {
@@ -31,10 +41,57 @@ public class OrderPersistenceEntityAssembler {
         orderEntity.setVersion(orderDomain.version());
         orderEntity.setBilling(this.billing(orderDomain));
         orderEntity.setShipping(this.shipping(orderDomain));
+        Set<OrderItemPersistenceEntity> mergedItems = mergeItems(orderDomain, orderEntity);
+        orderEntity.replaceItems(mergedItems);
 
         return orderEntity;
 
     }
+
+    private Set<OrderItemPersistenceEntity> mergeItems(Order orderDomain, OrderPersistenceEntity orderEntity) {
+
+        Set<OrderItem> newOrUpdateItems = orderDomain.items();
+
+        if (newOrUpdateItems.isEmpty() || newOrUpdateItems == null){
+            return new HashSet<>();
+        }
+
+        Set<OrderItemPersistenceEntity> existingItems = orderEntity.getItems();
+
+        if (existingItems.isEmpty() || existingItems == null){
+            return newOrUpdateItems.stream()
+                    .map(orderItem -> fromDomain(orderItem))
+                    .collect(Collectors.toSet());
+        }
+
+//        if (!existingItems.isEmpty() &&  !newOrUpdateItems.isEmpty()){
+            existingItems.clear();
+            return newOrUpdateItems.stream()
+                    .map(orderItem -> fromDomain(orderItem))
+                    .collect(Collectors.toSet());
+//        }
+
+//        return null;
+    }
+
+    public  OrderItemPersistenceEntity fromDomain(OrderItem orderItem){
+        return merge(new OrderItemPersistenceEntity(), orderItem);
+    }
+
+    private OrderItemPersistenceEntity merge(OrderItemPersistenceEntity orderItemPersistenceEntity, OrderItem orderItem){
+
+        orderItemPersistenceEntity.setId(orderItem.id().value().toLong());
+        orderItemPersistenceEntity.setProductId(orderItem.productId().value());
+        orderItemPersistenceEntity.setProductName(orderItem.productName().value());
+        orderItemPersistenceEntity.setPrice(orderItem.price().value());
+        orderItemPersistenceEntity.setQuantity(orderItem.quantity().value());
+        orderItemPersistenceEntity.setTotalAmount(orderItem.totalAmount().value());
+
+
+        return orderItemPersistenceEntity;
+
+    }
+
 
     public BillingEmbeddable billing(Order orderDomain){
         return BillingEmbeddable.builder()

@@ -10,6 +10,7 @@ import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.Shi
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Set;
 
 public class OrderPersistenceEntityTestDataBuilder {
 
@@ -26,9 +27,33 @@ public class OrderPersistenceEntityTestDataBuilder {
                 .paymentMethod("CREDIT_CARD")
                 .billing(billing())
                 .shipping(shipping())
-                .placedAt(OffsetDateTime.now());
+                .placedAt(OffsetDateTime.now())
+                .items(Set.of(
+                        existingItem().build(),
+                        existingItemAlt().build()
+
+                ));
     }
 
+    public static OrderItemPersistenceEntity.OrderItemPersistenceEntityBuilder existingItem(){
+        return OrderItemPersistenceEntity.builder()
+                .id(IdGenerator.generateTSID().toLong())
+                .price(new BigDecimal(500))
+                .quantity(2)
+                .totalAmount(new BigDecimal(1000))
+                .productName("Notebook")
+                .productId(IdGenerator.generateTimeBaseUUID());
+    }
+
+    public static OrderItemPersistenceEntity.OrderItemPersistenceEntityBuilder existingItemAlt(){
+        return OrderItemPersistenceEntity.builder()
+                .id(IdGenerator.generateTSID().toLong())
+                .price(new BigDecimal(250))
+                .quantity(1)
+                .totalAmount(new BigDecimal(250))
+                .productName("Mouse Pad")
+                .productId(IdGenerator.generateTimeBaseUUID());
+    }
 
     public static BillingEmbeddable billing(){
         return BillingEmbeddable.builder()

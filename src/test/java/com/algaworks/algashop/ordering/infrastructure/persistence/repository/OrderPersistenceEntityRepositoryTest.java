@@ -41,9 +41,13 @@ class OrderPersistenceEntityRepositoryTest {
 
         OrderPersistenceEntity orderPersistence = OrderPersistenceEntityTestDataBuilder.existingOrder().build();
 
-        orderPersistenceEntityRepository.saveAndFlush(orderPersistence);
+        OrderPersistenceEntity orderPersistenceEntity = orderPersistenceEntityRepository.saveAndFlush(orderPersistence);
+
+        int size = orderPersistenceEntity.getItems().size();
+
 
         Assertions.assertThat(orderPersistenceEntityRepository.existsById(orderPersistence.getId())).isTrue();
+        Assertions.assertThat(size).isEqualTo(2);
 
     }
 

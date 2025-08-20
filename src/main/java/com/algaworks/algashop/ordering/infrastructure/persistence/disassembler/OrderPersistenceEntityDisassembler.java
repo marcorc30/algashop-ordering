@@ -1,16 +1,25 @@
 package com.algaworks.algashop.ordering.infrastructure.persistence.disassembler;
 
 import com.algaworks.algashop.ordering.domain.model.entity.Order;
+import com.algaworks.algashop.ordering.domain.model.entity.OrderItem;
 import com.algaworks.algashop.ordering.domain.model.entity.OrderStatus;
 import com.algaworks.algashop.ordering.domain.model.entity.PaymentMethod;
 import com.algaworks.algashop.ordering.domain.model.valueobject.*;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.CustomerId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.OrderId;
+import com.algaworks.algashop.ordering.domain.model.valueobject.id.ProductId;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
+
+/*
+Persistence -> Domain
+ */
 @Component
 public class OrderPersistenceEntityDisassembler {
 
@@ -31,9 +40,33 @@ public class OrderPersistenceEntityDisassembler {
                 .version(persistenceEntity.getVersion())
                 .billing(this.billing(persistenceEntity))
                 .shipping(this.shipping(persistenceEntity))
+                .items(toOrderItems(persistenceEntity))
                 .build();
 
     }
+
+    public Set<OrderItem> toOrderItems(OrderPersistenceEntity persistenceEntity){
+
+        return persistenceEntity.getItems().stream()
+                .map(ip -> {
+                  Product product = Product.builder()
+                          .id(new ProductId(ip.getProductId()))
+                          .price(new Money(ip.getPrice()))
+                          .name(new ProductName(ip.getProductName()))
+                          .inStock(true)
+                          .build();
+
+                   return OrderItem.brandNew()
+                           .orderId(new OrderId(ip.getOrderId()))
+                           .product(product)
+                           .quantity(new Quantity(ip.getQuantity()))
+                           .build();
+
+                }).collect(Collectors.toSet());
+
+    }
+
+
 
     public Billing billing(OrderPersistenceEntity persistenceEntity){
         return Billing.builder()

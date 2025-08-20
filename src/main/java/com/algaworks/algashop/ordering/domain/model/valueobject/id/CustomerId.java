@@ -12,6 +12,11 @@ public record CustomerId(UUID value) {
         this.value = value;
     }
 
+
+    public Long toLong(){
+        return null;
+    }
+
     public CustomerId(){
         this(IdGenerator.generateTimeBaseUUID());
     }
@@ -21,4 +26,5 @@ public record CustomerId(UUID value) {
     public String toString() {
         return value.toString();
     }
+
 }
