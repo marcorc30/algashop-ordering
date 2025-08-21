@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:55:15.886Z" hostname="marco-Inspiron-3583" time="0.013">
+  <properties/>
+  <testcase name="dado_um_pedido_com_items_e_um_pedido_entity_com_items_atualizar_o_entity()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" time="0.005"/>
+  <testcase name="dado_um_pedido_sem_items_entao_remover_items_modelo_persistencia()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" time="0.001"/>
+  <testcase name="dado_um_pedido_com_itens_entao_adicionar_items_na_entity()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" time="0.002"/>
+  <testcase name="convert_domain_to_entity()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssemblerTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

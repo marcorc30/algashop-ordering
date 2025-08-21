@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.domain.model.valueobject.MoneyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:55:15.850Z" hostname="marco-Inspiron-3583" time="0.007">
+  <properties/>
+  <testcase name="quando_passar_valor_string_entao_arredondar_corretamente()" classname="com.algaworks.algashop.ordering.domain.model.valueobject.MoneyTest" time="0.002"/>
+  <testcase name="quando_passar_valor_double_entao_arredondar_corretamente()" classname="com.algaworks.algashop.ordering.domain.model.valueobject.MoneyTest" time="0.0"/>
+  <testcase name="quando_passar_valor_negativo_entao_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.valueobject.MoneyTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

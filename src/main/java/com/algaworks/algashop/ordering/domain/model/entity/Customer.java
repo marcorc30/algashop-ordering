@@ -44,6 +44,7 @@ public class Customer implements AggregateRoot<CustomerId>{
     private OffsetDateTime archivedAt;
     private LoyaltPoints loyaltPoints;
     private Address address;
+    private Long version;
 
 
 
@@ -235,6 +236,24 @@ public class Customer implements AggregateRoot<CustomerId>{
     public Address address(){
         return address;
     }
+
+    public Boolean promotionNotificationsAllowed() {
+        return promotionNotificationsAllowed;
+    }
+
+    public Boolean archived() {
+        return archived;
+    }
+
+    public Long version() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+
 
     private void setId(CustomerId id) {
         Objects.requireNonNull(id);

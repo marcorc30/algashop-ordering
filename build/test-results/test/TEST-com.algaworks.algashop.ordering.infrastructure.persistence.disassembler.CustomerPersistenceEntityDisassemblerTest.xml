@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.CustomerPersistenceEntityDisassemblerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:55:15.903Z" hostname="marco-Inspiron-3583" time="0.003">
+  <properties/>
+  <testcase name="dado_um_entity_converter_para_domain()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.CustomerPersistenceEntityDisassemblerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

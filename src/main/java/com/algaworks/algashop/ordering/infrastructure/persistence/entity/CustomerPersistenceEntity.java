@@ -4,8 +4,14 @@ import com.algaworks.algashop.ordering.domain.model.valueobject.*;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.CustomerId;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.AddressEmbeddable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -17,6 +23,8 @@ import java.util.UUID;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 @Entity
+
+@EntityListeners(AuditingEntityListener.class)
 public class CustomerPersistenceEntity {
 
     @Id
@@ -34,6 +42,16 @@ public class CustomerPersistenceEntity {
     private OffsetDateTime archivedAt;
     private Integer loyaltPoints;
     private AddressEmbeddable address;
+
+    @CreatedBy
+    private UUID createByUserId;
+    @LastModifiedBy
+    private UUID lastModifiedByUser;
+    @LastModifiedDate
+    private OffsetDateTime lastModifiedAt;
+
+    @Version
+    private Long version;
 
 
     @Builder

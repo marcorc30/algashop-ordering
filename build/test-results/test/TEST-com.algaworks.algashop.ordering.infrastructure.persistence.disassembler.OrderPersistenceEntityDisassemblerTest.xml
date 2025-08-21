@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassemblerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:55:15.910Z" hostname="marco-Inspiron-3583" time="0.008">
+  <properties/>
+  <testcase name="dado_um_entity_sem_items_entao_remover_items_do_model()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassemblerTest" time="0.003"/>
+  <testcase name="dado_um_entity_com_items_entao_adicionar_items_no_domain()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassemblerTest" time="0.002"/>
+  <testcase name="convertPersistenceModelToDomainEntity()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassemblerTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
