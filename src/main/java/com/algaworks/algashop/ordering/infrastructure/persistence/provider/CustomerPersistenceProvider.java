@@ -7,24 +7,44 @@ import com.algaworks.algashop.ordering.infrastructure.persistence.assembler.Cust
 import com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.CustomerPersistenceEntityDisassembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.repository.CustomerPersistenceEntityRepository;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
+@Component
 public class CustomerPersistenceProvider implements Customers {
 
-    private CustomerPersistenceEntityRepository repository;
+    private final CustomerPersistenceEntityRepository repository;
+    private final CustomerPersistenceEntityAssembler assembler;
+    private final CustomerPersistenceEntityDisassembler disassembler;
+
+    private final EntityManager entityManager;
+
 
     @Autowired
-    private CustomerPersistenceEntityAssembler assembler;
-    private CustomerPersistenceEntityDisassembler disassembler;
+    public CustomerPersistenceProvider(CustomerPersistenceEntityRepository repository,
+                                       CustomerPersistenceEntityAssembler assembler,
+                                       CustomerPersistenceEntityDisassembler disassembler,
+                                       EntityManager entityManager) {
+        this.repository = repository;
+        this.assembler = assembler;
+        this.disassembler = disassembler;
+        this.entityManager = entityManager;
+    }
 
     @Override
     public Optional<Customer> ofId(CustomerId customerId) {
         Objects.requireNonNull(customerId);
-        Optional<Customer> customer = repository.findById(customerId.value())
-                .map(cp -> disassembler.toDomainEntity(cp));
+        Optional<CustomerPersistenceEntity> customerPersistenceEntity = repository.findById(customerId.value());
+
+        Optional<Customer> customer = customerPersistenceEntity.map(cp -> disassembler.toDomainEntity(cp));
+
+
+//                .map(cp -> disassembler.toDomainEntity(cp));
 
         return customer;
     }
@@ -37,12 +57,29 @@ public class CustomerPersistenceProvider implements Customers {
 
     @Override
     public void add(Customer aggregateRoot) {
-        
-        long id = aggregateRoot.id().toLong();
 
+        UUID id = aggregateRoot.id().value();
+        
+        repository.findById(id).ifPresentOrElse(
+                (customerPersistenceEntity) -> update(aggregateRoot, customerPersistenceEntity ),
+                () -> insert(aggregateRoot)
+                
+        );
+
+
+    }
+
+    private void update(Customer aggregateRoot, CustomerPersistenceEntity persistenceEntity){
+        persistenceEntity = assembler.merge(persistenceEntity, aggregateRoot);
+        entityManager.detach(persistenceEntity);
+        persistenceEntity = repository.saveAndFlush(persistenceEntity);
+        aggregateRoot.setVersion(persistenceEntity.getVersion());
+
+    }
+
+    private void insert(Customer aggregateRoot) {
         CustomerPersistenceEntity customerPersistenceEntity = assembler.fromDomain(aggregateRoot);
         repository.saveAndFlush(customerPersistenceEntity);
-
     }
 
     @Override

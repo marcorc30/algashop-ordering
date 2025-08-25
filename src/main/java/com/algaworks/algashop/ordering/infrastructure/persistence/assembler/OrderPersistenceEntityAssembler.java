@@ -7,8 +7,11 @@ import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.Add
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.BillingEmbeddable;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.RecipientEmbedabble;
 import com.algaworks.algashop.ordering.infrastructure.persistence.embeddable.ShippingEmbeddable;
+import com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderItemPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
+import com.algaworks.algashop.ordering.infrastructure.persistence.repository.CustomerPersistenceEntityRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -20,7 +23,12 @@ Domain -> Persistence
  */
 
 @Component
+@RequiredArgsConstructor
 public class OrderPersistenceEntityAssembler {
+
+    public final CustomerPersistenceEntityRepository customerRepository;
+
+
 
     public OrderPersistenceEntity fromDomain(Order order){
         return merge(new OrderPersistenceEntity(), order);
@@ -29,7 +37,6 @@ public class OrderPersistenceEntityAssembler {
     public OrderPersistenceEntity merge(OrderPersistenceEntity orderEntity, Order orderDomain){
 
         orderEntity.setId(orderDomain.id().value().toLong());
-        orderEntity.setCustomerId(orderDomain.customerId().value());
         orderEntity.setTotalAmount(orderDomain.totalAmount().value());
         orderEntity.setTotalItems(orderDomain.quantity().value());
         orderEntity.setStatus(orderDomain.status().name());
@@ -43,6 +50,10 @@ public class OrderPersistenceEntityAssembler {
         orderEntity.setShipping(this.shipping(orderDomain));
         Set<OrderItemPersistenceEntity> mergedItems = mergeItems(orderDomain, orderEntity);
         orderEntity.replaceItems(mergedItems);
+
+
+        CustomerPersistenceEntity customerPersistenceEntity = customerRepository.getReferenceById(orderDomain.customerId().value());
+        orderEntity.setCustomer(customerPersistenceEntity);
 
         return orderEntity;
 

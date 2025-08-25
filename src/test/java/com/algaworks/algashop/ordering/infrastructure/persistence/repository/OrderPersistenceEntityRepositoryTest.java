@@ -65,7 +65,7 @@ class OrderPersistenceEntityRepositoryTest {
 
         OrderPersistenceEntity orderPersistence = OrderPersistenceEntity.builder()
                 .id(id)
-                .customerId(IdGenerator.generateTimeBaseUUID())
+                .customer(null)
                 .totalItems(2)
                 .totalAmount(new BigDecimal(1000))
                 .status("DRAFT")

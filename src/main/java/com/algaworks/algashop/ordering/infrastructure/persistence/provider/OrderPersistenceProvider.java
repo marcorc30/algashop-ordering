@@ -69,14 +69,8 @@ public class OrderPersistenceProvider implements Orders {
         long orderId = aggregateRoot.id().value().toLong();
 
         orderPersistenceEntityRepository.findById(orderId).ifPresentOrElse(
-                (persistenceEntity) -> {
-                    update(aggregateRoot, persistenceEntity);
-                },
-                () -> {
-                    insert(aggregateRoot);
-                }
-
-
+                (persistenceEntity) -> update(aggregateRoot, persistenceEntity),
+                () ->  insert(aggregateRoot)
         );
 
     }

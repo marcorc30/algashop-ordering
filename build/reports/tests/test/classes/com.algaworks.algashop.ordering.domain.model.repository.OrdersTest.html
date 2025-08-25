@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">4</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">14.926s</div>
+<div class="counter">0.008s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -60,6 +60,9 @@
 </div>
 <div class="tab-container">
 <ul class="tabLinks">
+<li>
+<a href="#">Failed tests</a>
+</li>
 <li>
 <a href="#">Tests</a>
 </li>
@@ -71,6 +74,72 @@
 </li>
 </ul>
 <div class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="deve_persistir_e_localizar()"></a>
+<h3 class="failures">deve_persistir_e_localizar()</h3>
+<span class="code">
+<pre>org.junit.jupiter.api.extension.ParameterResolutionException: Failed to resolve parameter [com.algaworks.algashop.ordering.domain.model.repository.Orders orders] in constructor [public com.algaworks.algashop.ordering.domain.model.repository.OrdersTest(com.algaworks.algashop.ordering.domain.model.repository.Orders)]: Failed to load ApplicationContext for [MergedContextConfiguration@2328ec73 testClass = com.algaworks.algashop.ordering.domain.model.repository.OrdersTest, locations = [], classes = [com.algaworks.algashop.ordering.OrderingApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.OnFailureConditionReportContextCustomizerFactory$OnFailureConditionReportContextCustomizer@18b0930f, org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@68044f4, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@34be3d80, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@3c3235f0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@4795ded0, [ImportsContextCustomizer@42a05533 key = [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration, org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, com.algaworks.algashop.ordering.infrastructure.persistence.provider.OrderPersistenceProvider, org.springframework.boot.autoconfigure.jdbc.JdbcClientAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassembler, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssembler]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2974f221, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@665df3c6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@674658f7, org.springframework.test.context.support.DynamicPropertiesContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestAnnotation@dd20a5dd], contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at java.base@21.0.6/java.util.Optional.orElseGet(Optional.java:364)
+	at java.base@21.0.6/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.6/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@2328ec73 testClass = com.algaworks.algashop.ordering.domain.model.repository.OrdersTest, locations = [], classes = [com.algaworks.algashop.ordering.OrderingApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.OnFailureConditionReportContextCustomizerFactory$OnFailureConditionReportContextCustomizer@18b0930f, org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@68044f4, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@34be3d80, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@3c3235f0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@4795ded0, [ImportsContextCustomizer@42a05533 key = [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration, org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, com.algaworks.algashop.ordering.infrastructure.persistence.provider.OrderPersistenceProvider, org.springframework.boot.autoconfigure.jdbc.JdbcClientAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassembler, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssembler]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2974f221, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@665df3c6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@674658f7, org.springframework.test.context.support.DynamicPropertiesContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestAnnotation@dd20a5dd], contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.getApplicationContext(SpringExtension.java:351)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.resolveParameter(SpringExtension.java:337)
+	... 3 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Could not determine recommended JdbcType for Java type 'com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity'
+	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at app//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at app//org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at app//org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at app//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at app//org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at app//org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at app//org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:144)
+	at app//org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at app//org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at app//org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461)
+	at app//org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:563)
+	at app//org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:144)
+	at app//org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110)
+	at app//org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at app//org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	... 6 more
+Caused by: org.hibernate.type.descriptor.java.spi.JdbcTypeRecommendationException: Could not determine recommended JdbcType for Java type 'com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity'
+	at app//org.hibernate.type.descriptor.java.spi.UnknownBasicJavaType.getRecommendedJdbcType(UnknownBasicJavaType.java:50)
+	at app//org.hibernate.boot.model.process.internal.InferredBasicValueResolver.from(InferredBasicValueResolver.java:195)
+	at app//org.hibernate.mapping.BasicValue.resolution(BasicValue.java:664)
+	at app//org.hibernate.mapping.BasicValue.buildResolution(BasicValue.java:461)
+	at app//org.hibernate.mapping.BasicValue.resolve(BasicValue.java:351)
+	at app//org.hibernate.mapping.BasicValue.resolve(BasicValue.java:341)
+	at app//org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$6(InFlightMetadataCollectorImpl.java:1827)
+	at java.base@21.0.6/java.util.ArrayList.removeIf(ArrayList.java:1765)
+	at java.base@21.0.6/java.util.ArrayList.removeIf(ArrayList.java:1743)
+	at app//org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1826)
+	at app//org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1812)
+	at app//org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:334)
+	at app//org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442)
+	at app//org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513)
+	at app//org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at app//org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at app//org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at app//org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at app//org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 26 more
+</pre>
+</span>
+</div>
+</div>
+<div class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -81,24 +150,9 @@
 </tr>
 </thead>
 <tr>
-<td class="success">deve_atualizar_um_pedido_existente()</td>
-<td class="success">0.028s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deve_nao_permitir_update_simultaneos()</td>
-<td class="success">0.031s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deve_permitir_update_separados()</td>
-<td class="success">14.853s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deve_persistir_e_localizar()</td>
-<td class="success">0.014s</td>
-<td class="success">passed</td>
+<td class="failures">deve_persistir_e_localizar()</td>
+<td class="failures">0.008s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
@@ -106,8 +160,8 @@
 <h2>Standard output</h2>
 <span class="code">
 <pre>Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
-20:54:58.368 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.algaworks.algashop.ordering.domain.model.repository.OrdersTest]: OrdersTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-20:54:58.500 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.algaworks.algashop.ordering.OrderingApplication for test class com.algaworks.algashop.ordering.domain.model.repository.OrdersTest
+22:14:32.943 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.algaworks.algashop.ordering.domain.model.repository.OrdersTest]: OrdersTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:14:33.053 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.algaworks.algashop.ordering.OrderingApplication for test class com.algaworks.algashop.ordering.domain.model.repository.OrdersTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -118,84 +172,423 @@
 
  :: Spring Boot ::                (v3.4.7)
 
-2025-08-21T20:54:58.818-03:00  INFO 25230 --- [ordering] [    Test worker] c.a.a.o.d.model.repository.OrdersTest    : Starting OrdersTest using Java 21.0.6 with PID 25230 (started by marco in /home/marco/projetos/EMS/algashop/microsservices/algashop-ordering)
-2025-08-21T20:54:58.820-03:00  INFO 25230 --- [ordering] [    Test worker] c.a.a.o.d.model.repository.OrdersTest    : The following 1 profile is active: &quot;test&quot;
-2025-08-21T20:54:59.140-03:00  INFO 25230 --- [ordering] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-08-21T20:54:59.193-03:00  INFO 25230 --- [ordering] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 2 JPA repository interfaces.
-2025-08-21T20:54:59.247-03:00  INFO 25230 --- [ordering] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
-2025-08-21T20:54:59.308-03:00  INFO 25230 --- [ordering] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:29ef7e61-96b8-4ac3-9f7f-a97df2904d50;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
-2025-08-21T20:54:59.518-03:00  INFO 25230 --- [ordering] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-08-21T20:54:59.556-03:00  INFO 25230 --- [ordering] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
-2025-08-21T20:54:59.579-03:00  INFO 25230 --- [ordering] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-08-21T20:54:59.758-03:00  INFO 25230 --- [ordering] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-08-21T20:54:59.795-03:00  WARN 25230 --- [ordering] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-21T20:54:59.809-03:00  INFO 25230 --- [ordering] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@68f776ee']
+2025-08-24T22:14:33.397-03:00  INFO 64739 --- [ordering] [    Test worker] c.a.a.o.d.model.repository.OrdersTest    : Starting OrdersTest using Java 21.0.6 with PID 64739 (started by marco in /home/marco/projetos/EMS/algashop/microsservices/algashop-ordering)
+2025-08-24T22:14:33.399-03:00  INFO 64739 --- [ordering] [    Test worker] c.a.a.o.d.model.repository.OrdersTest    : The following 1 profile is active: &quot;test&quot;
+2025-08-24T22:14:33.687-03:00  INFO 64739 --- [ordering] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-24T22:14:33.739-03:00  INFO 64739 --- [ordering] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 2 JPA repository interfaces.
+2025-08-24T22:14:33.778-03:00  INFO 64739 --- [ordering] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2025-08-24T22:14:33.844-03:00  INFO 64739 --- [ordering] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:2f3e3ba7-b19c-4267-b918-c881804d1980;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2025-08-24T22:14:34.034-03:00  INFO 64739 --- [ordering] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-24T22:14:34.076-03:00  INFO 64739 --- [ordering] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-24T22:14:34.105-03:00  INFO 64739 --- [ordering] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-24T22:14:34.302-03:00  INFO 64739 --- [ordering] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-24T22:14:34.336-03:00  WARN 64739 --- [ordering] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-24T22:14:34.350-03:00  INFO 64739 --- [ordering] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@5885e231']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
 	Autocommit mode: undefined/unknown
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-08-21T20:55:00.490-03:00  INFO 25230 --- [ordering] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: create table customer_persistence_entity (id uuid not null, city varchar(255), complement varchar(255), neighborhood varchar(255), number varchar(255), state varchar(255), street varchar(255), zip_code varchar(255), archived boolean, archived_at timestamp(6) with time zone, birth_date date, create_by_user_id uuid, document varchar(255), email varchar(255), first_name varchar(255), last_modified_at timestamp(6) with time zone, last_modified_by_user uuid, last_name varchar(255), loyalt_points integer, phone varchar(255), promotion_notifications_allowed boolean, registered_at timestamp(6) with time zone, version bigint, primary key (id))
-Hibernate: create table &quot;order&quot; (id bigint not null, billing_address_city varchar(255), billing_address_complement varchar(255), billing_address_neighborhood varchar(255), billing_address_number varchar(255), billing_address_state varchar(255), billing_address_street varchar(255), billing_address_zip_code varchar(255), billing_document varchar(255), email varchar(255), billing_first_name varchar(255), billing_last_name varchar(255), billing_phone varchar(255), canceled_at timestamp(6) with time zone, create_by_user_id uuid, customer_id uuid, last_modified_at timestamp(6) with time zone, last_modified_by_user_id uuid, paid_at timestamp(6) with time zone, payment_method varchar(255), placed_at timestamp(6) with time zone, ready_at timestamp(6) with time zone, shipping_address_city varchar(255), shipping_address_complement varchar(255), shipping_address_neighborhood varchar(255), shipping_address_number varchar(255), shipping_address_state varchar(255), shipping_address_street varchar(255), shipping_address_zip_code varchar(255), shipping_cost numeric(38,2), shipping_expected_date date, shipping_recipient_document varchar(255), shipping_recipient_first_name varchar(255), shipping_recipient_last_name varchar(255), shipping_recipient_phone varchar(255), status varchar(255), total_amount numeric(38,2), total_items integer, version bigint, primary key (id))
-Hibernate: create table order_item (id bigint not null, price numeric(38,2), product_id uuid, product_name varchar(255), quantity integer, total_amount numeric(38,2), &quot;order_id&quot; bigint not null, primary key (id))
-Hibernate: alter table if exists order_item add constraint FKsgmrolp8skulmo2vyb20c4mfk foreign key (&quot;order_id&quot;) references &quot;order&quot;
-2025-08-21T20:55:00.535-03:00  INFO 25230 --- [ordering] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-08-21T20:55:00.870-03:00  INFO 25230 --- [ordering] [    Test worker] c.a.a.o.d.model.repository.OrdersTest    : Started OrdersTest in 2.321 seconds (process running for 3.418)
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 where ope1_0.id=?
-Hibernate: insert into &quot;order&quot; (billing_address_city,billing_address_complement,billing_address_neighborhood,billing_address_number,billing_address_state,billing_address_street,billing_address_zip_code,billing_document,email,billing_first_name,billing_last_name,billing_phone,canceled_at,create_by_user_id,customer_id,last_modified_at,last_modified_by_user_id,paid_at,payment_method,placed_at,ready_at,shipping_address_city,shipping_address_complement,shipping_address_neighborhood,shipping_address_number,shipping_address_state,shipping_address_street,shipping_address_zip_code,shipping_cost,shipping_expected_date,shipping_recipient_document,shipping_recipient_first_name,shipping_recipient_last_name,shipping_recipient_phone,status,total_amount,total_items,version,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,i1_0.&quot;order_id&quot;,i1_0.id,i1_0.price,i1_0.product_id,i1_0.product_name,i1_0.quantity,i1_0.total_amount,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 left join order_item i1_0 on ope1_0.id=i1_0.&quot;order_id&quot; where ope1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: update &quot;order&quot; set billing_address_city=?,billing_address_complement=?,billing_address_neighborhood=?,billing_address_number=?,billing_address_state=?,billing_address_street=?,billing_address_zip_code=?,billing_document=?,email=?,billing_first_name=?,billing_last_name=?,billing_phone=?,canceled_at=?,create_by_user_id=?,customer_id=?,last_modified_at=?,last_modified_by_user_id=?,paid_at=?,payment_method=?,placed_at=?,ready_at=?,shipping_address_city=?,shipping_address_complement=?,shipping_address_neighborhood=?,shipping_address_number=?,shipping_address_state=?,shipping_address_street=?,shipping_address_zip_code=?,shipping_cost=?,shipping_expected_date=?,shipping_recipient_document=?,shipping_recipient_first_name=?,shipping_recipient_last_name=?,shipping_recipient_phone=?,status=?,total_amount=?,total_items=?,version=? where id=? and version=?
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,i1_0.&quot;order_id&quot;,i1_0.id,i1_0.price,i1_0.product_id,i1_0.product_name,i1_0.quantity,i1_0.total_amount,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 left join order_item i1_0 on ope1_0.id=i1_0.&quot;order_id&quot; where ope1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: update &quot;order&quot; set billing_address_city=?,billing_address_complement=?,billing_address_neighborhood=?,billing_address_number=?,billing_address_state=?,billing_address_street=?,billing_address_zip_code=?,billing_document=?,email=?,billing_first_name=?,billing_last_name=?,billing_phone=?,canceled_at=?,create_by_user_id=?,customer_id=?,last_modified_at=?,last_modified_by_user_id=?,paid_at=?,payment_method=?,placed_at=?,ready_at=?,shipping_address_city=?,shipping_address_complement=?,shipping_address_neighborhood=?,shipping_address_number=?,shipping_address_state=?,shipping_address_street=?,shipping_address_zip_code=?,shipping_cost=?,shipping_expected_date=?,shipping_recipient_document=?,shipping_recipient_first_name=?,shipping_recipient_last_name=?,shipping_recipient_phone=?,status=?,total_amount=?,total_items=?,version=? where id=? and version=?
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 where ope1_0.id=?
-Hibernate: insert into &quot;order&quot; (billing_address_city,billing_address_complement,billing_address_neighborhood,billing_address_number,billing_address_state,billing_address_street,billing_address_zip_code,billing_document,email,billing_first_name,billing_last_name,billing_phone,canceled_at,create_by_user_id,customer_id,last_modified_at,last_modified_by_user_id,paid_at,payment_method,placed_at,ready_at,shipping_address_city,shipping_address_complement,shipping_address_neighborhood,shipping_address_number,shipping_address_state,shipping_address_street,shipping_address_zip_code,shipping_cost,shipping_expected_date,shipping_recipient_document,shipping_recipient_first_name,shipping_recipient_last_name,shipping_recipient_phone,status,total_amount,total_items,version,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 where ope1_0.id=?
-Hibernate: insert into &quot;order&quot; (billing_address_city,billing_address_complement,billing_address_neighborhood,billing_address_number,billing_address_state,billing_address_street,billing_address_zip_code,billing_document,email,billing_first_name,billing_last_name,billing_phone,canceled_at,create_by_user_id,customer_id,last_modified_at,last_modified_by_user_id,paid_at,payment_method,placed_at,ready_at,shipping_address_city,shipping_address_complement,shipping_address_neighborhood,shipping_address_number,shipping_address_state,shipping_address_street,shipping_address_zip_code,shipping_cost,shipping_expected_date,shipping_recipient_document,shipping_recipient_first_name,shipping_recipient_last_name,shipping_recipient_phone,status,total_amount,total_items,version,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,i1_0.&quot;order_id&quot;,i1_0.id,i1_0.price,i1_0.product_id,i1_0.product_name,i1_0.quantity,i1_0.total_amount,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 left join order_item i1_0 on ope1_0.id=i1_0.&quot;order_id&quot; where ope1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: update &quot;order&quot; set billing_address_city=?,billing_address_complement=?,billing_address_neighborhood=?,billing_address_number=?,billing_address_state=?,billing_address_street=?,billing_address_zip_code=?,billing_document=?,email=?,billing_first_name=?,billing_last_name=?,billing_phone=?,canceled_at=?,create_by_user_id=?,customer_id=?,last_modified_at=?,last_modified_by_user_id=?,paid_at=?,payment_method=?,placed_at=?,ready_at=?,shipping_address_city=?,shipping_address_complement=?,shipping_address_neighborhood=?,shipping_address_number=?,shipping_address_state=?,shipping_address_street=?,shipping_address_zip_code=?,shipping_cost=?,shipping_expected_date=?,shipping_recipient_document=?,shipping_recipient_first_name=?,shipping_recipient_last_name=?,shipping_recipient_phone=?,status=?,total_amount=?,total_items=?,version=? where id=? and version=?
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 where ope1_0.id=?
-Hibernate: insert into &quot;order&quot; (billing_address_city,billing_address_complement,billing_address_neighborhood,billing_address_number,billing_address_state,billing_address_street,billing_address_zip_code,billing_document,email,billing_first_name,billing_last_name,billing_phone,canceled_at,create_by_user_id,customer_id,last_modified_at,last_modified_by_user_id,paid_at,payment_method,placed_at,ready_at,shipping_address_city,shipping_address_complement,shipping_address_neighborhood,shipping_address_number,shipping_address_state,shipping_address_street,shipping_address_zip_code,shipping_cost,shipping_expected_date,shipping_recipient_document,shipping_recipient_first_name,shipping_recipient_last_name,shipping_recipient_phone,status,total_amount,total_items,version,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,i1_0.&quot;order_id&quot;,i1_0.id,i1_0.price,i1_0.product_id,i1_0.product_name,i1_0.quantity,i1_0.total_amount,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 left join order_item i1_0 on ope1_0.id=i1_0.&quot;order_id&quot; where ope1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: select oipe1_0.id,oipe1_0.&quot;order_id&quot;,o1_0.id,o1_0.billing_address_city,o1_0.billing_address_complement,o1_0.billing_address_neighborhood,o1_0.billing_address_number,o1_0.billing_address_state,o1_0.billing_address_street,o1_0.billing_address_zip_code,o1_0.billing_document,o1_0.email,o1_0.billing_first_name,o1_0.billing_last_name,o1_0.billing_phone,o1_0.canceled_at,o1_0.create_by_user_id,o1_0.customer_id,o1_0.last_modified_at,o1_0.last_modified_by_user_id,o1_0.paid_at,o1_0.payment_method,o1_0.placed_at,o1_0.ready_at,o1_0.shipping_address_city,o1_0.shipping_address_complement,o1_0.shipping_address_neighborhood,o1_0.shipping_address_number,o1_0.shipping_address_state,o1_0.shipping_address_street,o1_0.shipping_address_zip_code,o1_0.shipping_cost,o1_0.shipping_expected_date,o1_0.shipping_recipient_document,o1_0.shipping_recipient_first_name,o1_0.shipping_recipient_last_name,o1_0.shipping_recipient_phone,o1_0.status,o1_0.total_amount,o1_0.total_items,o1_0.version,oipe1_0.price,oipe1_0.product_id,oipe1_0.product_name,oipe1_0.quantity,oipe1_0.total_amount from order_item oipe1_0 join &quot;order&quot; o1_0 on o1_0.id=oipe1_0.&quot;order_id&quot; where oipe1_0.id=?
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: insert into order_item (&quot;order_id&quot;,price,product_id,product_name,quantity,total_amount,id) values (?,?,?,?,?,?,?)
-Hibernate: update &quot;order&quot; set billing_address_city=?,billing_address_complement=?,billing_address_neighborhood=?,billing_address_number=?,billing_address_state=?,billing_address_street=?,billing_address_zip_code=?,billing_document=?,email=?,billing_first_name=?,billing_last_name=?,billing_phone=?,canceled_at=?,create_by_user_id=?,customer_id=?,last_modified_at=?,last_modified_by_user_id=?,paid_at=?,payment_method=?,placed_at=?,ready_at=?,shipping_address_city=?,shipping_address_complement=?,shipping_address_neighborhood=?,shipping_address_number=?,shipping_address_state=?,shipping_address_street=?,shipping_address_zip_code=?,shipping_cost=?,shipping_expected_date=?,shipping_recipient_document=?,shipping_recipient_first_name=?,shipping_recipient_last_name=?,shipping_recipient_phone=?,status=?,total_amount=?,total_items=?,version=? where id=? and version=?
-Hibernate: select ope1_0.id,ope1_0.billing_address_city,ope1_0.billing_address_complement,ope1_0.billing_address_neighborhood,ope1_0.billing_address_number,ope1_0.billing_address_state,ope1_0.billing_address_street,ope1_0.billing_address_zip_code,ope1_0.billing_document,ope1_0.email,ope1_0.billing_first_name,ope1_0.billing_last_name,ope1_0.billing_phone,ope1_0.canceled_at,ope1_0.create_by_user_id,ope1_0.customer_id,i1_0.&quot;order_id&quot;,i1_0.id,i1_0.price,i1_0.product_id,i1_0.product_name,i1_0.quantity,i1_0.total_amount,ope1_0.last_modified_at,ope1_0.last_modified_by_user_id,ope1_0.paid_at,ope1_0.payment_method,ope1_0.placed_at,ope1_0.ready_at,ope1_0.shipping_address_city,ope1_0.shipping_address_complement,ope1_0.shipping_address_neighborhood,ope1_0.shipping_address_number,ope1_0.shipping_address_state,ope1_0.shipping_address_street,ope1_0.shipping_address_zip_code,ope1_0.shipping_cost,ope1_0.shipping_expected_date,ope1_0.shipping_recipient_document,ope1_0.shipping_recipient_first_name,ope1_0.shipping_recipient_last_name,ope1_0.shipping_recipient_phone,ope1_0.status,ope1_0.total_amount,ope1_0.total_items,ope1_0.version from &quot;order&quot; ope1_0 left join order_item i1_0 on ope1_0.id=i1_0.&quot;order_id&quot; where ope1_0.id=?
+2025-08-24T22:14:34.532-03:00 ERROR 64739 --- [ordering] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Could not determine recommended JdbcType for Java type 'com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity'
+2025-08-24T22:14:34.533-03:00  WARN 64739 --- [ordering] [    Test worker] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Could not determine recommended JdbcType for Java type 'com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity'
+2025-08-24T22:14:34.548-03:00  INFO 64739 --- [ordering] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-08-24T22:14:34.569-03:00 ERROR 64739 --- [ordering] [    Test worker] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Could not determine recommended JdbcType for Java type 'com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.7.jar:3.4.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.7.jar:3.4.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.7.jar:3.4.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:144) ~[spring-boot-test-3.4.7.jar:3.4.7]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461) ~[spring-boot-3.4.7.jar:3.4.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:563) ~[spring-boot-test-3.4.7.jar:3.4.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:144) ~[spring-boot-test-3.4.7.jar:3.4.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110) ~[spring-boot-test-3.4.7.jar:3.4.7]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225) ~[spring-test-6.2.8.jar:6.2.8]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152) ~[spring-test-6.2.8.jar:6.2.8]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.2.8.jar:6.2.8]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.getApplicationContext(SpringExtension.java:351) ~[spring-test-6.2.8.jar:6.2.8]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.resolveParameter(SpringExtension.java:337) ~[spring-test-6.2.8.jar:6.2.8]
+	at org.junit.jupiter.engine.execution.ParameterResolutionUtils.resolveParameter(ParameterResolutionUtils.java:136) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.ParameterResolutionUtils.resolveParameters(ParameterResolutionUtils.java:103) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:59) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestClassConstructor(ClassBasedTestDescriptor.java:364) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateTestClass(ClassBasedTestDescriptor.java:311) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.instantiateTestClass(ClassTestDescriptor.java:79) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:287) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:279) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at java.base/java.util.Optional.orElseGet(Optional.java:364) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$6(ClassBasedTestDescriptor.java:278) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$1(TestMethodTestDescriptor.java:105) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:104) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:128) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:128) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:124) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:99) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:94) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:63) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) ~[na:na]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92) ~[na:na]
+	at jdk.proxy1/jdk.proxy1.$Proxy4.stop(Unknown Source) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:200) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63) ~[na:na]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72) ~[na:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
+Caused by: org.hibernate.type.descriptor.java.spi.JdbcTypeRecommendationException: Could not determine recommended JdbcType for Java type 'com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity'
+	at org.hibernate.type.descriptor.java.spi.UnknownBasicJavaType.getRecommendedJdbcType(UnknownBasicJavaType.java:50) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.boot.model.process.internal.InferredBasicValueResolver.from(InferredBasicValueResolver.java:195) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.mapping.BasicValue.resolution(BasicValue.java:664) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.mapping.BasicValue.buildResolution(BasicValue.java:461) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:351) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:341) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$6(InFlightMetadataCollectorImpl.java:1827) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1765) ~[na:na]
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1743) ~[na:na]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1826) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1812) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:334) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.8.jar:6.2.8]
+	... 94 common frames omitted
+
 </pre>
 </span>
 </div>
 <div class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
-WARNING: A Java agent has been loaded dynamically (/home/marco/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.15.11/a38b16385e867f59a641330f0362ebe742788ed8/byte-buddy-agent-1.15.11.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
+<pre>
+
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+   DataSourceAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+      - @ConditionalOnMissingBean (types: io.r2dbc.spi.ConnectionFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration matched:
+      - AnyNestedCondition 1 matched 1 did not; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.PooledDataSourceAvailable PooledDataSource found supported DataSource; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.ExplicitType @ConditionalOnProperty (spring.datasource.type) did not find property 'type' (DataSourceAutoConfiguration.PooledDataSourceCondition)
+      - @ConditionalOnMissingBean (types: javax.sql.DataSource,javax.sql.XADataSource; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration#jdbcConnectionDetails matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceConfiguration.Hikari matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+      - @ConditionalOnProperty (spring.datasource.type=com.zaxxer.hikari.HikariDataSource) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: javax.sql.DataSource; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceInitializationConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.sql.init.SqlDataSourceScriptDatabaseInitializer,org.springframework.boot.autoconfigure.sql.init.SqlR2dbcScriptDatabaseInitializer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.HikariPoolDataSourceMetadataProviderConfiguration matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.core.JdbcTemplate', 'org.springframework.transaction.TransactionManager' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   HibernateJpaAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean', 'jakarta.persistence.EntityManager', 'org.hibernate.engine.spi.SessionImplementor' (OnClassCondition)
+
+   HibernateJpaConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   JdbcClientAutoConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate; SearchStrategy: all) found a single bean 'namedParameterJdbcTemplate'; @ConditionalOnMissingBean (types: org.springframework.jdbc.core.simple.JdbcClient; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JdbcTemplateAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.core.JdbcTemplate' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   JdbcTemplateConfiguration matched:
+      - @ConditionalOnMissingBean (types: org.springframework.jdbc.core.JdbcOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#entityManagerFactory matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean,jakarta.persistence.EntityManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#entityManagerFactoryBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#jpaVendorAdapter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.JpaVendorAdapter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#transactionManager matched:
+      - @ConditionalOnMissingBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.PersistenceManagedTypesConfiguration matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean,jakarta.persistence.EntityManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.PersistenceManagedTypesConfiguration#persistenceManagedTypes matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.persistenceunit.PersistenceManagedTypes; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaRepositoriesAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.data.jpa.repository.JpaRepository' (OnClassCondition)
+      - @ConditionalOnProperty (spring.data.jpa.repositories.enabled=true) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: javax.sql.DataSource; SearchStrategy: all) found bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean,org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   NamedParameterJdbcTemplateConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.jdbc.core.JdbcTemplate; SearchStrategy: all) found a single bean 'jdbcTemplate'; @ConditionalOnMissingBean (types: org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   NoOpCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.NoOpCacheConfiguration NONE cache type (CacheCondition)
+
+   SqlInitializationAutoConfiguration matched:
+      - @ConditionalOnProperty (spring.sql.init.enabled) matched (OnPropertyCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on SqlInitializationAutoConfiguration.SqlInitializationModeCondition.ModeIsNever @ConditionalOnProperty (spring.sql.init.mode=never) did not find property 'mode' (SqlInitializationAutoConfiguration.SqlInitializationModeCondition)
+
+   TestDatabaseAutoConfiguration#nonTestEmbeddedDataSourceBeanFactoryPostProcessor matched:
+      - @ConditionalOnProperty (spring.test.database.replace=NON_TEST) matched (OnPropertyCondition)
+
+   TestEntityManagerAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.persistence.EntityManagerFactory' (OnClassCondition)
+
+   TestEntityManagerAutoConfiguration#testEntityManager matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration matched:
+      - @ConditionalOnBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) found bean 'transactionManager'; @ConditionalOnMissingBean (types: org.springframework.transaction.annotation.AbstractTransactionManagementConfiguration; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration.CglibAutoProxyConfiguration matched:
+      - @ConditionalOnProperty (spring.aop.proxy-target-class=true) matched (OnPropertyCondition)
+
+   TransactionAutoConfiguration.TransactionTemplateConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.transaction.PlatformTransactionManager; SearchStrategy: all) found a single bean 'transactionManager' (OnBeanCondition)
+
+   TransactionAutoConfiguration.TransactionTemplateConfiguration#transactionTemplate matched:
+      - @ConditionalOnMissingBean (types: org.springframework.transaction.support.TransactionOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   Cache2kCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.cache2k.Cache2kBuilder' (OnClassCondition)
+
+   CacheAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.cache.interceptor.CacheAspectSupport; SearchStrategy: all) did not find any beans of type org.springframework.cache.interceptor.CacheAspectSupport (OnBeanCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.cache.CacheManager' (OnClassCondition)
+
+   CacheAutoConfiguration.CacheManagerEntityManagerFactoryDependsOnPostProcessor:
+      Did not match:
+         - Ancestor org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration did not match (ConditionEvaluationReport.AncestorsMatchedCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' (OnClassCondition)
+
+   CaffeineCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.github.benmanes.caffeine.cache.Caffeine' (OnClassCondition)
+
+   CouchbaseCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+
+   DataSourceAutoConfiguration.EmbeddedDatabaseConfiguration:
+      Did not match:
+         - EmbeddedDataSource spring.datasource.url is set (DataSourceAutoConfiguration.EmbeddedDatabaseCondition)
+
+   DataSourceCheckpointRestoreConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.crac.Resource' (OnClassCondition)
+
+   DataSourceConfiguration.Dbcp2:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourceConfiguration.Generic:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.type) did not find property 'spring.datasource.type' (OnPropertyCondition)
+
+   DataSourceConfiguration.OracleUcp:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSourceImpl', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourceConfiguration.Tomcat:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceJmxConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.jmx.enabled=true) found different value in property 'enabled' (OnPropertyCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.CommonsDbcp2PoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.OracleUcpPoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSource', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.TomcatDataSourcePoolMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration#transactionManager:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) found beans of type 'org.springframework.transaction.TransactionManager' transactionManager (OnBeanCondition)
+
+   FlywayAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.flywaydb.core.Flyway' (OnClassCondition)
+
+   GenericCacheConfiguration:
+      Did not match:
+         - Cache org.springframework.boot.autoconfigure.cache.GenericCacheConfiguration unknown cache type (CacheCondition)
+
+   HazelcastCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+
+   InfinispanCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.infinispan.spring.embedded.provider.SpringEmbeddedCacheManager' (OnClassCondition)
+
+   JCacheCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'javax.cache.Caching' (OnClassCondition)
+
+   JpaBaseConfiguration.JpaWebConfiguration:
+      Did not match:
+         - not a servlet web application (OnWebApplicationCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+
+   JpaRepositoriesAutoConfiguration#entityManagerFactoryBootstrapExecutorCustomizer:
+      Did not match:
+         - AnyNestedCondition 0 matched 2 did not; NestedCondition on JpaRepositoriesAutoConfiguration.BootstrapExecutorCondition.LazyBootstrapMode @ConditionalOnProperty (spring.data.jpa.repositories.bootstrap-mode=lazy) found different value in property 'bootstrap-mode'; NestedCondition on JpaRepositoriesAutoConfiguration.BootstrapExecutorCondition.DeferredBootstrapMode @ConditionalOnProperty (spring.data.jpa.repositories.bootstrap-mode=deferred) found different value in property 'bootstrap-mode' (JpaRepositoriesAutoConfiguration.BootstrapExecutorCondition)
+
+   LiquibaseAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'liquibase.change.DatabaseChange' (OnClassCondition)
+
+   R2dbcInitializationConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.r2dbc.spi.ConnectionFactory', 'org.springframework.r2dbc.connection.init.DatabasePopulator' (OnClassCondition)
+
+   RedisCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.redis.connection.RedisConnectionFactory' (OnClassCondition)
+
+   SimpleCacheConfiguration:
+      Did not match:
+         - Cache org.springframework.boot.autoconfigure.cache.SimpleCacheConfiguration unknown cache type (CacheCondition)
+
+   TestDatabaseAutoConfiguration#dataSource:
+      Did not match:
+         - @ConditionalOnProperty (spring.test.database.replace=AUTO_CONFIGURED) did not find property 'replace' (OnPropertyCondition)
+
+   TestDatabaseAutoConfiguration#embeddedDataSourceBeanFactoryPostProcessor:
+      Did not match:
+         - @ConditionalOnProperty (spring.test.database.replace=ANY) did not find property 'replace' (OnPropertyCondition)
+
+   TransactionAutoConfiguration#transactionalOperator:
+      Did not match:
+         - @ConditionalOnSingleCandidate (types: org.springframework.transaction.ReactiveTransactionManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration.AspectJTransactionManagementConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.transaction.aspectj.AbstractTransactionAspect; SearchStrategy: all) did not find any beans of type org.springframework.transaction.aspectj.AbstractTransactionAspect (OnBeanCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration.JdkDynamicAutoProxyConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.aop.proxy-target-class=false) did not find property 'proxy-target-class' (OnPropertyCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration
+
+
+
 </pre>
 </span>
 </div>
@@ -207,7 +600,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 8.14.2</a> at 21 de ago. de 2025 20:55:17</p>
+<a href="https://www.gradle.org">Gradle 8.14.2</a> at 24 de ago. de 2025 22:14:34</p>
 </div>
 </div>
 </body>

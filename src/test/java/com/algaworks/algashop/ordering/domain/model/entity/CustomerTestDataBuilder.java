@@ -34,7 +34,7 @@ public class CustomerTestDataBuilder {
 
     }
 
-    public static Customer.BrandExistingCustomerBuild existingAnonymyzedCustomer(){
+    public static Customer.BrandExistingCustomerBuild existingdCustomer(){
         return Customer.brandExisting()
                 .id(new CustomerId())
                 .registeredAt(OffsetDateTime.now())
@@ -62,7 +62,7 @@ public class CustomerTestDataBuilder {
 
     }
 
-    public static Customer.BrandExistingCustomerBuild existingCustomer(){
+    public static Customer.BrandExistingCustomerBuild existingAnonymyzedCustomer(){
         return Customer.brandExisting()
                 .id(new CustomerId())
                 .fullName(new FullName("Anonymous","Anonymous"))

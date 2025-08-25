@@ -42,6 +42,7 @@ public class CustomerPersistenceEntityAssembler {
                 .zipCode(customer.address().zipCode().value())
                 .street(customer.address().street())
                 .neighborhood(customer.address().neighborhood())
+                .number(customer.address().number())
                 .build();
 
     }

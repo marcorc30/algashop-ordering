@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.entity.OrderMarkAsPaidTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:54:58.109Z" hostname="marco-Inspiron-3583" time="0.003">
-  <properties/>
-  <testcase name="dado_um_pedido_draft_quando_pagar_entao_gerar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.entity.OrderMarkAsPaidTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

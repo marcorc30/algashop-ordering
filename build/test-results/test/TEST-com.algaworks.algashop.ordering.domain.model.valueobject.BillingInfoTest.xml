@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.valueobject.BillingInfoTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:55:15.812Z" hostname="marco-Inspiron-3583" time="0.005">
-  <properties/>
-  <testcase name="quando_criar_billing_info_entao_se_conter_valor_null_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.valueobject.BillingInfoTest" time="0.001"/>
-  <testcase name="quando_criar_billing_info_entao_retornar_valores_passados()" classname="com.algaworks.algashop.ordering.domain.model.valueobject.BillingInfoTest" time="0.004"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

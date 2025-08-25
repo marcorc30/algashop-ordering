@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.valueobject.DocumentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:55:15.829Z" hostname="marco-Inspiron-3583" time="0.001">
-  <properties/>
-  <testcase name="quando_cadastrar_document_em_branco_ou_nulo_entao_lancar_exception()" classname="com.algaworks.algashop.ordering.domain.model.valueobject.DocumentTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
