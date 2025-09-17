@@ -23,6 +23,9 @@ public class ShoppingCartItem {
     private Boolean available;
 
 
+    public ShoppingCartItem() {
+    }
+
     @Builder(builderClassName = "ExistingShoppingCartItem", builderMethodName = "existing")
     public ShoppingCartItem(ShoppingCartItemId id, ShoppingCartId shoppingCartId, ProductId productId,
                             ProductName productName, Money price, Quantity quantity,

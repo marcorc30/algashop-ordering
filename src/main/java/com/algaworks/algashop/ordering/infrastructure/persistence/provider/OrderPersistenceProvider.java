@@ -3,6 +3,7 @@ package com.algaworks.algashop.ordering.infrastructure.persistence.provider;
 import com.algaworks.algashop.ordering.domain.model.entity.Order;
 import com.algaworks.algashop.ordering.domain.model.repository.Orders;
 import com.algaworks.algashop.ordering.domain.model.valueobject.Money;
+import com.algaworks.algashop.ordering.domain.model.valueobject.id.CustomerId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.OrderId;
 import com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassembler;
@@ -13,7 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.time.Year;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /*
 Essa classe eh uma "ponte" dentre a camada de dominio e a camanda de infra (possui conexao com banco de dados)
@@ -75,6 +80,30 @@ public class OrderPersistenceProvider implements Orders {
 
     }
 
+    @Override
+    public List<Order> placedByCustomerInYear(CustomerId customerId, Year year) {
+        List<OrderPersistenceEntity> entities = orderPersistenceEntityRepository.placedByCustomerInYear(
+                customerId.value(),
+                year.getValue()
+        );
+
+        return entities.stream().map(orderPersistenceEntityDisassembler::toDomainEntity).collect(Collectors.toList());
+
+
+    }
+
+    @Override
+    public Long salesQuantityByCustomerInYear(CustomerId customerId, Year year) {
+        return orderPersistenceEntityRepository.salesQuantityByCustomerInYear(customerId.value(), year.getValue());
+    }
+
+    @Override
+    public Money totalSouldForCustomer(CustomerId customerId) {
+        BigDecimal totalForCustomer = orderPersistenceEntityRepository.totalSoldForCustomer(customerId.value());
+
+        return new Money(totalForCustomer);
+    }
+
     private void update(Order aggregateRoot, OrderPersistenceEntity persistenceEntity) {
         persistenceEntity = orderPersistenceEntityAssembler.merge(persistenceEntity, aggregateRoot);
         entityManager.detach(persistenceEntity);
@@ -88,5 +117,5 @@ public class OrderPersistenceProvider implements Orders {
         orderPersistenceEntityRepository.saveAndFlush(persistenceEntity);
 
     }
-    
+
 }

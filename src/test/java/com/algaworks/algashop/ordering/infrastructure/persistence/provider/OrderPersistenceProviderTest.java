@@ -1,18 +1,22 @@
 package com.algaworks.algashop.ordering.infrastructure.persistence.provider;
 
+import com.algaworks.algashop.ordering.domain.model.entity.CustomerTestDataBuilder;
 import com.algaworks.algashop.ordering.domain.model.entity.Order;
 import com.algaworks.algashop.ordering.domain.model.entity.OrderStatus;
 import com.algaworks.algashop.ordering.domain.model.entity.OrderTestDataBuilder;
 import com.algaworks.algashop.ordering.domain.model.repository.Orders;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.OrderId;
+import com.algaworks.algashop.ordering.infrastructure.persistence.assembler.CustomerPersistenceEntityAssembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.assembler.OrderPersistenceEntityAssembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.config.SpringDataAuditingConfig;
+import com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.CustomerPersistenceEntityDisassembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.disassembler.OrderPersistenceEntityDisassembler;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntityTestDataBuilder;
 import com.algaworks.algashop.ordering.infrastructure.persistence.repository.OrderPersistenceEntityRepository;
 import org.assertj.core.api.Assertions;
 import org.hibernate.LazyInitializationException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -22,21 +26,35 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.beans.PropertyDescriptor;
 
+import static com.algaworks.algashop.ordering.domain.model.entity.CustomerTestDataBuilder.DEFAULT_CUSTOMER_ID;
+
 @Import({OrderPersistenceProvider.class,
         OrderPersistenceEntityAssembler.class,
         OrderPersistenceEntityDisassembler.class,
+        CustomerPersistenceProvider.class,
+        CustomerPersistenceEntityDisassembler.class,
+        CustomerPersistenceEntityAssembler.class,
         SpringDataAuditingConfig.class})
 @DataJpaTest
 class OrderPersistenceProviderTest {
 
     private OrderPersistenceProvider persistenceProvider;
     private OrderPersistenceEntityRepository entityRepository;
+    private CustomerPersistenceProvider customerPersistenceProvider;
 
     @Autowired
     public OrderPersistenceProviderTest(OrderPersistenceProvider persistenceProvider,
-                                        OrderPersistenceEntityRepository entityRepository) {
+                                        OrderPersistenceEntityRepository entityRepository, CustomerPersistenceProvider customerPersistenceProvider) {
         this.persistenceProvider = persistenceProvider;
         this.entityRepository = entityRepository;
+        this.customerPersistenceProvider = customerPersistenceProvider;
+    }
+
+    @BeforeEach
+    public void setup(){
+        if (!customerPersistenceProvider.exists(DEFAULT_CUSTOMER_ID)){
+            customerPersistenceProvider.add(CustomerTestDataBuilder.existingdCustomer().build());
+        }
     }
 
     @Test

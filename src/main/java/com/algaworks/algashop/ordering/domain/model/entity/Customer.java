@@ -71,28 +71,46 @@ public class Customer implements AggregateRoot<CustomerId>{
                 address);
     }
 
-
-    @Builder(builderClassName = "BrandExistingCustomerBuild", builderMethodName = "brandExisting")
-    private static Customer createExisting(CustomerId id, FullName fullName, BirthDate birthDate, Email email, Phone phone,
-                                   Document document, Boolean promotionNotificationsAllowed, Boolean archived,
-                                   OffsetDateTime registeredAt, OffsetDateTime archivedAt, LoyaltPoints loyaltyPoints, Address address){
-
-
-        return new Customer(
-                id,
-                fullName,
-                birthDate,
-                email,
-                phone,
-                document,
-                promotionNotificationsAllowed,
-                archived,
-                registeredAt,
-                archivedAt,
-                loyaltyPoints,
-                address
-        );
+    @Builder(builderClassName = "ExistingCustomerBuild", builderMethodName = "existing")
+    private Customer(CustomerId id, Long version, FullName fullName, BirthDate birthDate, Email email, Phone phone,
+                     Document document, Boolean promotionNotificationsAllowed, Boolean archived,
+                     OffsetDateTime registeredAt, OffsetDateTime archivedAt, LoyaltPoints loyaltyPoints, Address address) {
+        this.setId(id);
+        this.setVersion(version);
+        this.setFullName(fullName);
+        this.setBirthDate(birthDate);
+        this.setEmail(email);
+        this.setPhone(phone);
+        this.setDocument(document);
+        this.setPromotionNotificationsAllowed(promotionNotificationsAllowed);
+        this.setArchived(archived);
+        this.setRegisteredAt(registeredAt);
+        this.setArchivedAt(archivedAt);
+        this.setLoyaltPoints(loyaltyPoints);
+        this.setAddress(address);
     }
+
+//    @Builder(builderClassName = "BrandExistingCustomerBuild", builderMethodName = "brandExisting")
+//    private static Customer createExisting(CustomerId id, FullName fullName, BirthDate birthDate, Email email, Phone phone,
+//                                   Document document, Boolean promotionNotificationsAllowed, Boolean archived,
+//                                   OffsetDateTime registeredAt, OffsetDateTime archivedAt, LoyaltPoints loyaltyPoints, Address address){
+//
+//
+//        return new Customer(
+//                id,
+//                fullName,
+//                birthDate,
+//                email,
+//                phone,
+//                document,
+//                promotionNotificationsAllowed,
+//                archived,
+//                registeredAt,
+//                archivedAt,
+//                loyaltyPoints,
+//                address
+//        );
+//    }
 
 
     private Customer(CustomerId id, FullName fullName, BirthDate birthDate, Email email, Phone phone,

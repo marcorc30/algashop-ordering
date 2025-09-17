@@ -31,6 +31,9 @@ public class OrderPersistenceEntity {
     @Id
     @EqualsAndHashCode.Include
     private Long id;
+
+    @JoinColumn
+    @ManyToOne(optional = false)
     private CustomerPersistenceEntity customer;
 
     private BigDecimal totalAmount;

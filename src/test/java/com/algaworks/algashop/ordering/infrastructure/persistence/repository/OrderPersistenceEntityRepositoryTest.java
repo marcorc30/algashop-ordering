@@ -2,9 +2,12 @@ package com.algaworks.algashop.ordering.infrastructure.persistence.repository;
 
 import com.algaworks.algashop.ordering.domain.model.utility.IdGenerator;
 import com.algaworks.algashop.ordering.infrastructure.persistence.config.SpringDataAuditingConfig;
+import com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntity;
+import com.algaworks.algashop.ordering.infrastructure.persistence.entity.CustomerPersistenceEntityTestDataBuilder;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.OrderPersistenceEntityTestDataBuilder;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
+import static com.algaworks.algashop.ordering.domain.model.entity.CustomerTestDataBuilder.DEFAULT_CUSTOMER_ID;
 import static org.junit.jupiter.api.Assertions.*;
 
 //@SpringBootTest
@@ -30,16 +35,35 @@ class OrderPersistenceEntityRepositoryTest {
 
 //    @Autowired
     private final OrderPersistenceEntityRepository orderPersistenceEntityRepository;
+    private final CustomerPersistenceEntityRepository customerPersistenceEntityRepository;
+
+    private CustomerPersistenceEntity customerPersistenceEntity;
+
 
     @Autowired
-    public OrderPersistenceEntityRepositoryTest(OrderPersistenceEntityRepository orderPersistenceEntityRepository) {
+    public OrderPersistenceEntityRepositoryTest(OrderPersistenceEntityRepository orderPersistenceEntityRepository, CustomerPersistenceEntityRepository customerPersistenceEntityRepository) {
         this.orderPersistenceEntityRepository = orderPersistenceEntityRepository;
+        this.customerPersistenceEntityRepository = customerPersistenceEntityRepository;
+    }
+
+    @BeforeEach
+    public void setup(){
+        UUID customerId = DEFAULT_CUSTOMER_ID.value();
+
+        if (!customerPersistenceEntityRepository.existsById(customerId)){
+            customerPersistenceEntity =  customerPersistenceEntityRepository.saveAndFlush(CustomerPersistenceEntityTestDataBuilder.exiting().build());
+
+        }
+
+
     }
 
     @Test
     public void shouldPersist(){
 
-        OrderPersistenceEntity orderPersistence = OrderPersistenceEntityTestDataBuilder.existingOrder().build();
+        OrderPersistenceEntity orderPersistence = OrderPersistenceEntityTestDataBuilder.existingOrder()
+                .customer(customerPersistenceEntity)
+                .build();
 
         OrderPersistenceEntity orderPersistenceEntity = orderPersistenceEntityRepository.saveAndFlush(orderPersistence);
 
@@ -65,7 +89,7 @@ class OrderPersistenceEntityRepositoryTest {
 
         OrderPersistenceEntity orderPersistence = OrderPersistenceEntity.builder()
                 .id(id)
-                .customer(null)
+                .customer(customerPersistenceEntity)
                 .totalItems(2)
                 .totalAmount(new BigDecimal(1000))
                 .status("DRAFT")
@@ -84,7 +108,9 @@ class OrderPersistenceEntityRepositoryTest {
 
     @Test
     public void shouldPersistAndSaveAudit(){
-        OrderPersistenceEntity orderPersistenceEntity = OrderPersistenceEntityTestDataBuilder.existingOrder().build();
+        OrderPersistenceEntity orderPersistenceEntity = OrderPersistenceEntityTestDataBuilder.existingOrder()
+                .customer(customerPersistenceEntity)
+                .build();
         orderPersistenceEntity = orderPersistenceEntityRepository.saveAndFlush(orderPersistenceEntity);
 
 

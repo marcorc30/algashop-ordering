@@ -8,10 +8,12 @@ import com.algaworks.algashop.ordering.domain.model.valueobject.id.ProductId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.ShoppingCartId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.ShoppingCartItemId;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.*;
+
 
 public class ShoppingCart implements AggregateRoot<ShoppingCartId>{
 
@@ -21,6 +23,12 @@ public class ShoppingCart implements AggregateRoot<ShoppingCartId>{
     private Quantity totalItens;
     private OffsetDateTime createdAt;
     private Set<ShoppingCartItem> items;
+
+    private Long version;
+
+
+    public ShoppingCart() {
+    }
 
     @Builder(builderClassName = "ExistingShoppingCartBuilder", builderMethodName = "existing")
     public ShoppingCart(ShoppingCartId id, CustomerId customerId, Money totalAmount, Quantity totalItens,
@@ -70,7 +78,13 @@ public class ShoppingCart implements AggregateRoot<ShoppingCartId>{
         return totalItens;
     }
 
+    public Long version() {
+        return version;
+    }
 
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     public OffsetDateTime createdAt() {
         return createdAt;

@@ -20,7 +20,7 @@ public class OrderPersistenceEntityTestDataBuilder {
     public static OrderPersistenceEntity.OrderPersistenceEntityBuilder existingOrder(){
         return OrderPersistenceEntity.builder()
                 .id(IdGenerator.generateTSID().toLong())
-                .customer(CustomerPersistenceEntityTestDataBuilder.exiting().build())
+                .customer(CustomerPersistenceEntityTestDataBuilder.aCustomer().build())
                 .totalItems(2)
                 .totalAmount(new BigDecimal(1000))
                 .status("DRAFT")
