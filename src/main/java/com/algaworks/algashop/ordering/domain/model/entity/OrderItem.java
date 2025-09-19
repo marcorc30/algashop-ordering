@@ -47,7 +47,7 @@ public class OrderItem {
         Objects.requireNonNull(product);
         Objects.requireNonNull(quantity);
 
-        return new OrderItem(
+        OrderItem orderItem = new OrderItem(
                 new OrderItemId(),
                 orderId,
                 product.id(),
@@ -55,6 +55,10 @@ public class OrderItem {
                 product.price(),
                 quantity,
                 Money.ZERO);
+
+        orderItem.recalculateTotals();
+
+        return orderItem;
     }
 
     void changeQuantity(Quantity quantity) {

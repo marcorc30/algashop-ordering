@@ -27,9 +27,9 @@ public record LoyaltPoints(Integer value) implements Comparable<LoyaltPoints>{
 
     public LoyaltPoints add(LoyaltPoints loyaltPoints){
         Objects.requireNonNull(value);
-        if (loyaltPoints.value() <= 0){
-            throw new IllegalArgumentException();
-        }
+//        if (loyaltPoints.value() <= 0){
+//            throw new IllegalArgumentException();
+//        }
 
         return new LoyaltPoints(this.value() + loyaltPoints.value());
     }

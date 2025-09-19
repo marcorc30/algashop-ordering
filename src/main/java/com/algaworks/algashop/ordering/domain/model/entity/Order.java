@@ -221,6 +221,10 @@ public class Order implements AggregateRoot<OrderId>{
         return OrderStatus.PAID.equals(this.status);
     }
 
+    public boolean isRead(){
+        return OrderStatus.READY.equals(this.status);
+    }
+
     public void addItem(Product product, Quantity quantity){
 
         this.verifyIfChangeable();
