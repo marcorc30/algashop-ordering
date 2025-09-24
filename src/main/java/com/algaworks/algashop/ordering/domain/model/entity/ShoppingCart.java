@@ -54,7 +54,7 @@ public class ShoppingCart implements AggregateRoot<ShoppingCartId>{
 
     public void recalculateTotals(){
 
-        BigDecimal totalAmount = this.items.stream().map(i -> i.price().value()).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totalAmount = this.items.stream().map(i -> i.totalAmount().value()).reduce(BigDecimal.ZERO, BigDecimal::add);
         Integer totalQuantity = this.items.stream().map(i -> i.quantity().value()).reduce(0, Integer::sum);
 
         setTotalAmount(new Money(totalAmount));
@@ -209,9 +209,13 @@ public class ShoppingCart implements AggregateRoot<ShoppingCartId>{
     }
 
     public ShoppingCartItem findItem(ProductId productId){
-        return  this.items
+        Objects.requireNonNull(productId);
+        ShoppingCartItem shoppingCartItem = this.items
                 .stream()
-                .filter(i -> i.productId().equals(productId)).findAny().orElseThrow(() -> new IllegalArgumentException());
+                .filter(i -> i.productId().equals(productId))
+                .findFirst().orElseThrow(() -> new IllegalArgumentException());
+
+        return shoppingCartItem;
 
 
     }

@@ -3,14 +3,16 @@ package com.algaworks.algashop.ordering.domain.model.service;
 import com.algaworks.algashop.ordering.domain.exception.CustomerEmailIsInUseException;
 import com.algaworks.algashop.ordering.domain.model.entity.Customer;
 import com.algaworks.algashop.ordering.domain.model.repository.Customers;
+import com.algaworks.algashop.ordering.domain.model.utility.DomainService;
 import com.algaworks.algashop.ordering.domain.model.valueobject.*;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.CustomerId;
 import lombok.RequiredArgsConstructor;
 
+@DomainService
 @RequiredArgsConstructor
 public final class CustomerRegistrationService {
 
-    private Customers customers;
+    private final Customers customers;
 
     public Customer register(FullName fullName, BirthDate birthDate, Email email,
                              Phone phone, Document document, Boolean promotionNotificationsAllowed,
@@ -39,7 +41,9 @@ public final class CustomerRegistrationService {
 
     private void verifyEmailUniqueness(Email email, CustomerId id) {
 
-        if (!customers.isEmailUnique(email, id)){
+        boolean emailUnique = customers.isEmailUnique(email, id);
+
+        if (!emailUnique){
             throw new CustomerEmailIsInUseException();
 
         }
