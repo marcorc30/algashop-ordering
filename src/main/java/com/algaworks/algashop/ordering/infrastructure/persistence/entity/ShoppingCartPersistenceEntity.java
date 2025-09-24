@@ -15,35 +15,37 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@NoArgsConstructor
+@Entity
+@Getter
+@Setter
 @ToString(of = "id")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Data
-@Entity
-
+@Table(name = "\"shopping_cart\"")
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class ShoppingCartPersistenceEntity {
-
     @Id
     @EqualsAndHashCode.Include
     private UUID id;
-    private UUID customerId;
     private BigDecimal totalAmount;
-    private Integer totalItens;
-    private OffsetDateTime createdAt;
+    private Integer totalItems;
 
     @JoinColumn
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<ShoppingCartItemPersistenceEntity> items;
+    @ManyToOne(optional = false)
+    private CustomerPersistenceEntity customer;
+
+    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL)
+    private Set<ShoppingCartItemPersistenceEntity> items = new HashSet<>();
 
     @CreatedBy
-    private UUID createByUserId;
+    private UUID createdByUserId;
 
     @CreatedDate
-    private OffsetDateTime createAt;
+    private OffsetDateTime createdAt;
 
     @LastModifiedDate
     private OffsetDateTime lastModifiedAt;
@@ -54,15 +56,48 @@ public class ShoppingCartPersistenceEntity {
     @Version
     private Long version;
 
-
-    @Builder
-    public ShoppingCartPersistenceEntity(UUID id, UUID customerId, BigDecimal totalAmount, Integer totalItens,
-                                         OffsetDateTime createdAt, Set<ShoppingCartItemPersistenceEntity> items) {
+    @Builder(toBuilder = true)
+    public ShoppingCartPersistenceEntity(UUID id, CustomerPersistenceEntity customer, BigDecimal totalAmount, Integer totalItems, OffsetDateTime createdAt,
+                                         Set<ShoppingCartItemPersistenceEntity> items) {
         this.id = id;
-        this.customerId = customerId;
+        this.customer = customer;
         this.totalAmount = totalAmount;
-        this.totalItens = totalItens;
+        this.totalItems = totalItems;
         this.createdAt = createdAt;
-        this.items = items;
+        this.replaceItems(items);
+    }
+
+    public void addItem(Set<ShoppingCartItemPersistenceEntity> items) {
+        for (ShoppingCartItemPersistenceEntity item : items) {
+            this.addItem(item);
+        }
+    }
+
+    public void addItem(ShoppingCartItemPersistenceEntity item) {
+        if (item == null) {
+            return;
+        }
+        if (this.getItems() == null) {
+            this.setItems(new HashSet<>());
+        }
+        item.setShoppingCart(this);
+        this.items.add(item);
+    }
+
+    public UUID getCustomerId() {
+        if (customer == null) {
+            return null;
+        }
+        return customer.getId();
+    }
+
+    public void replaceItems(Set<ShoppingCartItemPersistenceEntity> updatedItems) {
+        if (updatedItems == null || updatedItems.isEmpty()) {
+            this.setItems(new HashSet<>());
+            return;
+        }
+
+        updatedItems.forEach(i -> i.setShoppingCart(this));
+        this.setItems(updatedItems);
     }
 }

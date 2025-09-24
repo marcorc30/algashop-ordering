@@ -6,41 +6,49 @@ import com.algaworks.algashop.ordering.domain.model.valueobject.ProductName;
 import com.algaworks.algashop.ordering.domain.model.valueobject.Quantity;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.CustomerId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.ProductId;
+import com.algaworks.algashop.ordering.domain.model.valueobject.id.ShoppingCartId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.ShoppingCartItemId;
 
 import java.util.UUID;
 
 public class ShoppingCartTestDataBuilder {
 
-    public static ShoppingCart newShoppingCart(){
+    public CustomerId customerId = CustomerTestDataBuilder.DEFAULT_CUSTOMER_ID;
+    public static final ShoppingCartId DEFAULT_SHOPPING_CART_ID = new ShoppingCartId();
+    private boolean withItems = true;
 
-        ShoppingCart shoppingCart = ShoppingCart.startShopping(new CustomerId());
+    private ShoppingCartTestDataBuilder() {
+    }
 
-        Product product = Product.builder()
-                .id(new ProductId())
-                .price(new Money("10.00"))
-                .name(new ProductName("Produto teste"))
-                .inStock(true)
-                .build();
+    public static ShoppingCartTestDataBuilder aShoppingCart() {
+        return new ShoppingCartTestDataBuilder();
+    }
 
+    public ShoppingCart build() {
+        ShoppingCart cart = ShoppingCart.startShopping(customerId);
 
-        ShoppingCartItem shoppingCartItem = ShoppingCartItem.brandNew()
-                .shoppingCartId(shoppingCart.id())
-                .price(product.price())
-                .quantity(new Quantity(5))
-                .available(true)
-                .productId(product.id())
-                .productName(product.name())
-                .id(new ShoppingCartItemId())
-                .build();
+        if (withItems) {
+            cart.addItem(
+                    ProductTestDataBuilder.aProduct().build(),
+                    new Quantity(2)
+            );
+            cart.addItem(
+                    ProductTestDataBuilder.aProductAltRamMemory().build(),
+                    new Quantity(1)
+            );
+        }
 
+        return cart;
+    }
 
-        shoppingCart.addItem(product, new Quantity(10));
+    public ShoppingCartTestDataBuilder customerId(CustomerId customerId) {
+        this.customerId = customerId;
+        return this;
+    }
 
-        return shoppingCart;
-
-
-
+    public ShoppingCartTestDataBuilder withItems(boolean withItems) {
+        this.withItems = withItems;
+        return this;
     }
 
 }

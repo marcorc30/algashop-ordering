@@ -1,21 +1,48 @@
 package com.algaworks.algashop.ordering.infrastructure.persistence.entity;
 
+import com.algaworks.algashop.ordering.domain.model.utility.IdGenerator;
+import com.algaworks.algashop.ordering.infrastructure.persistence.repository.CustomerPersistenceEntityRepository;
+import com.algaworks.algashop.ordering.infrastructure.persistence.entity.ShoppingCartPersistenceEntity.ShoppingCartPersistenceEntityBuilder;
+
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 public class ShoppingCartPersistenceEntityTestDataBuilder {
-
-    public ShoppingCartPersistenceEntityTestDataBuilder() {
+    private ShoppingCartPersistenceEntityTestDataBuilder() {
     }
 
-    public static ShoppingCartPersistenceEntity existingShoppingCart(){
+    public static ShoppingCartPersistenceEntityBuilder existingShoppingCart() {
         return ShoppingCartPersistenceEntity.builder()
-                .id(UUID.randomUUID())
-                .customerId(UUID.randomUUID())
-                .totalAmount(new BigDecimal("200.00"))
-                .totalItens(10)
+                .id(IdGenerator.generateTimeBaseUUID())
+                .customer(CustomerPersistenceEntityTestDataBuilder.aCustomer().build())
+                .totalItems(3)
+                .totalAmount(new BigDecimal(1250))
                 .createdAt(OffsetDateTime.now())
-                .build();
+                .items(Set.of(
+                        existingItem().build(),
+                        existingItemAlt().build()
+                ));
+    }
+
+    public static ShoppingCartItemPersistenceEntity.ShoppingCartItemPersistenceEntityBuilder existingItem() {
+        return ShoppingCartItemPersistenceEntity.builder()
+                .id(IdGenerator.generateTimeBaseUUID())
+                .price(new BigDecimal(500))
+                .quantity(2)
+                .totalAmount(new BigDecimal(1000))
+                .name("Notebook")
+                .productId(IdGenerator.generateTimeBaseUUID());
+    }
+
+    public static ShoppingCartItemPersistenceEntity.ShoppingCartItemPersistenceEntityBuilder existingItemAlt() {
+        return ShoppingCartItemPersistenceEntity.builder()
+                .id(IdGenerator.generateTimeBaseUUID())
+                .price(new BigDecimal(250))
+                .quantity(1)
+                .totalAmount(new BigDecimal(250))
+                .name("Mouse pad")
+                .productId(IdGenerator.generateTimeBaseUUID());
     }
 }

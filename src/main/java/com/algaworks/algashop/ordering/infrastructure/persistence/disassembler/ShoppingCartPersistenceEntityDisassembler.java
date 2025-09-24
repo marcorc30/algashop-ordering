@@ -8,6 +8,7 @@ import com.algaworks.algashop.ordering.domain.model.valueobject.Quantity;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.CustomerId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.ProductId;
 import com.algaworks.algashop.ordering.domain.model.valueobject.id.ShoppingCartId;
+import com.algaworks.algashop.ordering.domain.model.valueobject.id.ShoppingCartItemId;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.ShoppingCartItemPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.ShoppingCartPersistenceEntity;
 import org.springframework.stereotype.Component;
@@ -17,42 +18,31 @@ import java.util.stream.Collectors;
 
 @Component
 public class ShoppingCartPersistenceEntityDisassembler {
-
-    public ShoppingCart fromEntity(ShoppingCartPersistenceEntity entity, ShoppingCart domain){
-
+    public ShoppingCart toDomainEntity(ShoppingCartPersistenceEntity source) {
         return ShoppingCart.existing()
-                .id(new ShoppingCartId(entity.getId()))
-                .createdAt(entity.getCreatedAt())
-                .totalAmount(new Money(entity.getTotalAmount()))
-                .totalItens(new Quantity(entity.getTotalItens()))
-                .customerId(new CustomerId(entity.getCustomerId()))
-                .items(converteItems(entity.getItems()))
+                .id(new ShoppingCartId(source.getId()))
+                .customerId(new CustomerId(source.getCustomerId()))
+                .totalAmount(new Money(source.getTotalAmount()))
+                .createdAt(source.getCreatedAt())
+                .items(toItemsDomainEntities(source.getItems()))
+                .totalItens(new Quantity(source.getTotalItems()))
                 .build();
-
     }
 
-
-    private Set<ShoppingCartItem> converteItems(Set<ShoppingCartItemPersistenceEntity> entitySet){
-
-        return entitySet
-                .stream()
-                .map(es -> fromEntityItem(es, new ShoppingCartItem()))
-                .collect(Collectors.toSet());
-
-
+    private Set<ShoppingCartItem> toItemsDomainEntities(Set<ShoppingCartItemPersistenceEntity> source) {
+        return source.stream().map(this::toItemEntity).collect(Collectors.toSet());
     }
 
-    private ShoppingCartItem fromEntityItem(ShoppingCartItemPersistenceEntity entity, ShoppingCartItem domain){
-
-        return ShoppingCartItem.brandNew()
-                .shoppingCartId(new ShoppingCartId(entity.getShoppingCartId()))
-                .price(new Money(entity.getPrice()))
-                .productName(new ProductName(entity.getProductName()))
-                .productId(new ProductId(entity.getProductId()))
-                .available(entity.getAvailable())
-                .quantity(new Quantity(entity.getQuantity()))
+    private ShoppingCartItem toItemEntity(ShoppingCartItemPersistenceEntity source) {
+        return ShoppingCartItem.existing()
+                .id(new ShoppingCartItemId(source.getId()))
+                .shoppingCartId(new ShoppingCartId(source.getShoppingCartId()))
+                .productId(new ProductId(source.getProductId()))
+                .productName(new ProductName(source.getName()))
+                .price(new Money(source.getPrice()))
+                .quantity(new Quantity(source.getQuantity()))
+                .available(source.getAvailable())
+                .totalAmount(new Money(source.getTotalAmount()))
                 .build();
-
     }
-
 }

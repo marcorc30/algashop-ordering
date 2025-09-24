@@ -36,7 +36,7 @@ class ShoppingCartsPersistenceProviderTest {
     @Test
     void gravarERecuperarPorId(){
 
-        ShoppingCart shoppingCart = ShoppingCartTestDataBuilder.newShoppingCart();
+        ShoppingCart shoppingCart = ShoppingCartTestDataBuilder.aShoppingCart().build();
         ShoppingCartId id = shoppingCart.id();
 
         shoppingCartsPersistenceProvider.add(shoppingCart);

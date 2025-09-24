@@ -4,6 +4,7 @@ import com.algaworks.algashop.ordering.domain.model.entity.ShoppingCart;
 import com.algaworks.algashop.ordering.domain.model.entity.ShoppingCartItem;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.ShoppingCartItemPersistenceEntity;
 import com.algaworks.algashop.ordering.infrastructure.persistence.entity.ShoppingCartPersistenceEntity;
+import com.algaworks.algashop.ordering.infrastructure.persistence.repository.CustomerPersistenceEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,49 +16,49 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ShoppingCartPersistenceEntityAssembler {
 
-    public ShoppingCartPersistenceEntity fromDomain(ShoppingCart domain){
-        return merge(new ShoppingCartPersistenceEntity(), domain);
+    private final CustomerPersistenceEntityRepository customerPersistenceEntityRepository;
+
+    public ShoppingCartPersistenceEntity fromDomain(ShoppingCart shoppingCart) {
+        return merge(new ShoppingCartPersistenceEntity(), shoppingCart);
     }
 
-    public ShoppingCartPersistenceEntity merge(ShoppingCartPersistenceEntity entity, ShoppingCart domain){
-
-        entity.setId(domain.id().value());
-        entity.setVersion(domain.version());
-        entity.setTotalAmount(domain.totalAmount().value());
-        entity.setCustomerId(domain.customerId().value());
-        entity.setCreateAt(domain.createdAt());
-        entity.setTotalItens(domain.totalItens().value());
-        entity.setItems(converterLista(domain.items()));
-
-        return entity;
+    public ShoppingCartPersistenceEntity merge(ShoppingCartPersistenceEntity persistenceEntity,
+                                               ShoppingCart shoppingCart) {
+        persistenceEntity.setId(shoppingCart.id().value());
+        persistenceEntity.setCustomer(customerPersistenceEntityRepository.getReferenceById(shoppingCart.customerId().value()));
+        persistenceEntity.setTotalAmount(shoppingCart.totalAmount().value());
+        persistenceEntity.setTotalItems(shoppingCart.totalItens().value());
+        persistenceEntity.setCreatedAt(shoppingCart.createdAt());
+        persistenceEntity.replaceItems(toOrderItemsEntities(shoppingCart.items()));
+        return persistenceEntity;
     }
 
-
-    private Set<ShoppingCartItemPersistenceEntity> converterLista(Set<ShoppingCartItem> itemsDomain){
-
-        return itemsDomain.stream()
-                .map(id -> mergeItems(new ShoppingCartItemPersistenceEntity(), id))
-                .collect(Collectors.toSet());
-
+    private Set<ShoppingCartItemPersistenceEntity> toOrderItemsEntities(Set<ShoppingCartItem> source) {
+        return source.stream().map(i -> this.mergeItem(new ShoppingCartItemPersistenceEntity(), i)).collect(Collectors.toSet());
     }
 
-
-    public ShoppingCartItemPersistenceEntity fromDomainItems(ShoppingCartItem domain){
-        return mergeItems(new ShoppingCartItemPersistenceEntity(), domain);
+    private ShoppingCartItemPersistenceEntity mergeItem(ShoppingCartItemPersistenceEntity persistenceEntity, ShoppingCartItem shoppingCartItem
+    ) {
+        persistenceEntity.setId(shoppingCartItem.id().value());
+        persistenceEntity.setProductId(shoppingCartItem.productId().value());
+        persistenceEntity.setName(shoppingCartItem.productName().value());
+        persistenceEntity.setPrice(shoppingCartItem.price().value());
+        persistenceEntity.setQuantity(shoppingCartItem.quantity().value());
+        persistenceEntity.setAvailable(shoppingCartItem.available());
+        persistenceEntity.setTotalAmount(shoppingCartItem.totalAmount().value());
+        return persistenceEntity;
     }
 
-    public ShoppingCartItemPersistenceEntity mergeItems(ShoppingCartItemPersistenceEntity entity, ShoppingCartItem domain){
-        entity.setId(domain.id().value());
-        entity.setPrice(domain.price().value());
-        entity.setShoppingCartId(domain.shoppingCartId().value());
-        entity.setAvailable(domain.available());
-        entity.setProductId(domain.productId().value());
-        entity.setProductName(domain.productName().value());
-        entity.setTotalAmount(domain.totalAmount().value());
-        entity.setQuantity(domain.quantity().value());
-
-        return entity;
+    private ShoppingCartItemPersistenceEntity toOrderItemsEntities(ShoppingCartItem source) {
+        return ShoppingCartItemPersistenceEntity.builder()
+                .id(source.id().value())
+                .shoppingCart(ShoppingCartPersistenceEntity.builder().id(source.shoppingCartId().value()).build())
+                .productId(source.productId().value())
+                .name(source.productName().value())
+                .price(source.price().value())
+                .quantity(source.quantity().value())
+                .available(source.available())
+                .totalAmount(source.totalAmount().value())
+                .build();
     }
-
-
 }
