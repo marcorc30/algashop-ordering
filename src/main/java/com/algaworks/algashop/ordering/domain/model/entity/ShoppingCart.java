@@ -220,6 +220,9 @@ public class ShoppingCart implements AggregateRoot<ShoppingCartId>{
 
     }
 
+    public boolean containsUnavailableItems(){
+        return this.items.stream().anyMatch(i -> !i.available());
+    }
 
     public boolean isEmpty(){
         return this.items.isEmpty();

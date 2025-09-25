@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.domain.model.service.ShoppingServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-25T23:11:18.032Z" hostname="marco-Inspiron-3583" time="0.581">
+  <properties/>
+  <testcase name="clienteNaoEncontrado()" classname="com.algaworks.algashop.ordering.domain.model.service.ShoppingServiceTest" time="0.581"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
