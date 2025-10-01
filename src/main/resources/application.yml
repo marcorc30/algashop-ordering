@@ -14,3 +14,15 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
+
+
+  algashop:
+    integrations:
+      shipping:
+        provider: "RAPIDEX"
+      rapidex:
+        url: "http://localhost:8780"
+
+  logging:
+    level:
+      org.springframework.boot.autoconfigure.condition: DEBUG
