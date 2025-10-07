@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.domain.model.order.OrderTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:46.272Z" hostname="marco-Inspiron-3583" time="0.019">
+  <properties/>
+  <testcase name="quando_tentar_alterar_set_items_entao_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.001"/>
+  <testcase name="dado_um_pedido_gerado_quando_tentar_atribuir_place_novamente_gerar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.002"/>
+  <testcase name="dado_um_pedido_alterar_dados_entrega_com_data_passada_entao_gerar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.002"/>
+  <testcase name="dado_um_pedido_com_items_entao_alterar_quantidade_de_um_item()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.003"/>
+  <testcase name="dado_um_pedido_rascunho_quando_editar_entao_permitir_edicao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.001"/>
+  <testcase name="dado_um_pedido_quando_incluir_item_sem_estoque_entao_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.002"/>
+  <testcase name="dado_um_pedido_fechado_quando_excluir_entao_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.002"/>
+  <testcase name="dado_um_pedido_rascunho_alterar_informacoes_entrega()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.001"/>
+  <testcase name="adicionarItemPedido()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.002"/>
+  <testcase name="testNewOrder()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

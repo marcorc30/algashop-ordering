@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.service.CustomerRegistrationServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:48.541Z" hostname="marco-Inspiron-3583" time="0.003">
+  <properties/>
+  <testcase name="registrarCustomer()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.service.CustomerRegistrationServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

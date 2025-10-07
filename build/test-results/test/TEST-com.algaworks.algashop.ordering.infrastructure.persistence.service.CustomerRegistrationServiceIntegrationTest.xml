@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.infrastructure.persistence.service.CustomerRegistrationServiceIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:48.500Z" hostname="marco-Inspiron-3583" time="0.04">
+  <properties/>
+  <testcase name="registrarCustomer()" classname="com.algaworks.algashop.ordering.infrastructure.persistence.service.CustomerRegistrationServiceIntegrationTest" time="0.04"/>
+  <system-out><![CDATA[2025-10-01T19:16:48.485-03:00  INFO 209006 --- [ordering] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.algaworks.algashop.ordering.infrastructure.persistence.service.CustomerRegistrationServiceIntegrationTest]: CustomerRegistrationServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-10-01T19:16:48.496-03:00  INFO 209006 --- [ordering] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.algaworks.algashop.ordering.OrderingApplication for test class com.algaworks.algashop.ordering.infrastructure.persistence.service.CustomerRegistrationServiceIntegrationTest
+Hibernate: select cpe1_0.id from customer_persistence_entity cpe1_0 where cpe1_0.email=? and cpe1_0.id<>? fetch first ? rows only
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

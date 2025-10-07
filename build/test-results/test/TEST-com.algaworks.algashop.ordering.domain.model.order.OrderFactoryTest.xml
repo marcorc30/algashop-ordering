@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.domain.model.order.OrderFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:46.249Z" hostname="marco-Inspiron-3583" time="0.01">
+  <properties/>
+  <testcase name="criarPedidoRascunhoNovo()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderFactoryTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
