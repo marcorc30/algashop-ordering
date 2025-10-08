@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.commons.FullNameTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:44.016Z" hostname="marco-Inspiron-3583" time="0.005">
-  <properties/>
-  <testcase name="quando_criar_nome_completo_com_valores_valido_entao_retorne_nome_completo()" classname="com.algaworks.algashop.ordering.domain.model.commons.FullNameTest" time="0.003"/>
-  <testcase name="quando_criar_nome_ou_sobrenome_null_ou_branco_entao_lancar_exception()" classname="com.algaworks.algashop.ordering.domain.model.commons.FullNameTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.order.OrderMarkAsCanceledTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:46.261Z" hostname="marco-Inspiron-3583" time="0.002">
-  <properties/>
-  <testcase name="dado_um_pedido_cancelado_quando_tentar_cancelar_novamente_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderMarkAsCanceledTest" time="0.001"/>
-  <testcase name="dado_um_pedido_diferente_de_cancelado_quando_tentar_cancelar_entao_mudar_status_para_cancelado()" classname="com.algaworks.algashop.ordering.domain.model.order.OrderMarkAsCanceledTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

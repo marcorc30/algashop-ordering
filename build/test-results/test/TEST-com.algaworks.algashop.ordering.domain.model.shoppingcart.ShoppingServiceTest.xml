@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.shoppingcart.ShoppingServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:47.100Z" hostname="marco-Inspiron-3583" time="0.087">
-  <properties/>
-  <testcase name="compraBemSucedida()" classname="com.algaworks.algashop.ordering.domain.model.shoppingcart.ShoppingServiceTest" time="0.078"/>
-  <testcase name="clienteNaoEncontrado()" classname="com.algaworks.algashop.ordering.domain.model.shoppingcart.ShoppingServiceTest" time="0.009"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

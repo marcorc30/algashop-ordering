@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.shoppingcart.ShippingInfoTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:47.084Z" hostname="marco-Inspiron-3583" time="0.002">
-  <properties/>
-  <testcase name="quando_criar_shipping_info_entao_retornar_valores_passados()" classname="com.algaworks.algashop.ordering.domain.model.shoppingcart.ShippingInfoTest" time="0.001"/>
-  <testcase name="quando_criar_shipping_info_entao_se_conter_valor_null_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.shoppingcart.ShippingInfoTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

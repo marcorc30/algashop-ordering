@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.algashop.ordering.application.service.customer.management.CustomerManagementApplicationServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-08T23:02:08.497Z" hostname="marco-Inspiron-3583" time="1.983">
+  <properties/>
+  <testcase name="create()" classname="com.algaworks.algashop.ordering.application.service.customer.management.CustomerManagementApplicationServiceTest" time="1.983"/>
+  <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+20:01:58.774 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.algaworks.algashop.ordering.application.service.customer.management.CustomerManagementApplicationServiceTest]: CustomerManagementApplicationServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:01:59.178 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.algaworks.algashop.ordering.OrderingApplication for test class com.algaworks.algashop.ordering.application.service.customer.management.CustomerManagementApplicationServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.7)
+
+2025-10-08T20:02:00.379-03:00  INFO 462469 --- [ordering] [    Test worker] CustomerManagementApplicationServiceTest : Starting CustomerManagementApplicationServiceTest using Java 21.0.6 with PID 462469 (started by marco in /home/marco/projetos/EMS/algashop/microsservices/algashop-ordering)
+2025-10-08T20:02:00.381-03:00  INFO 462469 --- [ordering] [    Test worker] CustomerManagementApplicationServiceTest : The following 1 profile is active: "test"
+2025-10-08T20:02:01.457-03:00  INFO 462469 --- [ordering] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-08T20:02:01.551-03:00  INFO 462469 --- [ordering] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 3 JPA repository interfaces.
+2025-10-08T20:02:02.267-03:00  INFO 462469 --- [ordering] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-08T20:02:02.324-03:00  INFO 462469 --- [ordering] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-10-08T20:02:02.401-03:00  INFO 462469 --- [ordering] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-08T20:02:02.898-03:00  INFO 462469 --- [ordering] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-08T20:02:02.926-03:00  INFO 462469 --- [ordering] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-08T20:02:03.086-03:00  INFO 462469 --- [ordering] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ordering-test user=SA
+2025-10-08T20:02:03.088-03:00  INFO 462469 --- [ordering] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-08T20:02:03.111-03:00  WARN 462469 --- [ordering] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-08T20:02:03.130-03:00  INFO 462469 --- [ordering] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-08T20:02:04.811-03:00  INFO 462469 --- [ordering] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table customer_persistence_entity (id uuid not null, city varchar(255), complement varchar(255), neighborhood varchar(255), number varchar(255), state varchar(255), street varchar(255), zip_code varchar(255), archived boolean, archived_at timestamp(6) with time zone, birth_date date, create_by_user_id uuid, document varchar(255), email varchar(255), first_name varchar(255), last_modified_at timestamp(6) with time zone, last_modified_by_user uuid, last_name varchar(255), loyalt_points integer, phone varchar(255), promotion_notifications_allowed boolean, registered_at timestamp(6) with time zone, version bigint, primary key (id))
+Hibernate: create table "order" (id bigint not null, billing_address_city varchar(255), billing_address_complement varchar(255), billing_address_neighborhood varchar(255), billing_address_number varchar(255), billing_address_state varchar(255), billing_address_street varchar(255), billing_address_zip_code varchar(255), billing_document varchar(255), email varchar(255), billing_first_name varchar(255), billing_last_name varchar(255), billing_phone varchar(255), canceled_at timestamp(6) with time zone, create_by_user_id uuid, last_modified_at timestamp(6) with time zone, last_modified_by_user_id uuid, paid_at timestamp(6) with time zone, payment_method varchar(255), placed_at timestamp(6) with time zone, ready_at timestamp(6) with time zone, shipping_address_city varchar(255), shipping_address_complement varchar(255), shipping_address_neighborhood varchar(255), shipping_address_number varchar(255), shipping_address_state varchar(255), shipping_address_street varchar(255), shipping_address_zip_code varchar(255), shipping_cost numeric(38,2), shipping_expected_date date, shipping_recipient_document varchar(255), shipping_recipient_first_name varchar(255), shipping_recipient_last_name varchar(255), shipping_recipient_phone varchar(255), status varchar(255), total_amount numeric(38,2), total_items integer, version bigint, customer_id uuid not null, primary key (id))
+Hibernate: create table order_item (id bigint not null, price numeric(38,2), product_id uuid, product_name varchar(255), quantity integer, total_amount numeric(38,2), "order_id" bigint not null, primary key (id))
+Hibernate: create table "shopping_cart" (id uuid not null, created_at timestamp(6) with time zone, created_by_user_id uuid, last_modified_at timestamp(6) with time zone, last_modified_by_user_id uuid, total_amount numeric(38,2), total_items integer, version bigint, customer_id uuid not null, primary key (id))
+Hibernate: create table shopping_cart_item (id uuid not null, available boolean, created_at timestamp(6) with time zone, created_by_user_id uuid, last_modified_at timestamp(6) with time zone, last_modified_by_user_id uuid, name varchar(255), price numeric(38,2), product_id uuid, quantity integer, total_amount numeric(38,2), version bigint, "shopping_cart_id" uuid not null, primary key (id))
+Hibernate: alter table if exists "order" add constraint FKa9ajwn6xa5c41i013kempf058 foreign key (customer_id) references customer_persistence_entity
+Hibernate: alter table if exists order_item add constraint FKsgmrolp8skulmo2vyb20c4mfk foreign key ("order_id") references "order"
+Hibernate: alter table if exists "shopping_cart" add constraint FK6b17ahw31id1a481w8ijbxlx9 foreign key (customer_id) references customer_persistence_entity
+Hibernate: alter table if exists shopping_cart_item add constraint FKsqefhxject71i5aea80s5vui9 foreign key ("shopping_cart_id") references "shopping_cart"
+2025-10-08T20:02:05.000-03:00  INFO 462469 --- [ordering] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-08T20:02:05.377-03:00  INFO 462469 --- [ordering] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-08T20:02:08.216-03:00  WARN 462469 --- [ordering] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-08T20:02:08.422-03:00  INFO 462469 --- [ordering] [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ordering-test'
+2025-10-08T20:02:08.484-03:00  INFO 462469 --- [ordering] [    Test worker] CustomerManagementApplicationServiceTest : Started CustomerManagementApplicationServiceTest in 8.973 seconds (process running for 11.643)
+Hibernate: select cpe1_0.id from customer_persistence_entity cpe1_0 where cpe1_0.email=? and cpe1_0.id<>? fetch first ? rows only
+Hibernate: select cpe1_0.id,cpe1_0.city,cpe1_0.complement,cpe1_0.neighborhood,cpe1_0.number,cpe1_0.state,cpe1_0.street,cpe1_0.zip_code,cpe1_0.archived,cpe1_0.archived_at,cpe1_0.birth_date,cpe1_0.create_by_user_id,cpe1_0.document,cpe1_0.email,cpe1_0.first_name,cpe1_0.last_modified_at,cpe1_0.last_modified_by_user,cpe1_0.last_name,cpe1_0.loyalt_points,cpe1_0.phone,cpe1_0.promotion_notifications_allowed,cpe1_0.registered_at,cpe1_0.version from customer_persistence_entity cpe1_0 where cpe1_0.id=?
+Hibernate: insert into customer_persistence_entity (city,complement,neighborhood,number,state,street,zip_code,archived,archived_at,birth_date,create_by_user_id,document,email,first_name,last_modified_at,last_modified_by_user,last_name,loyalt_points,phone,promotion_notifications_allowed,registered_at,version,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select cpe1_0.id,cpe1_0.city,cpe1_0.complement,cpe1_0.neighborhood,cpe1_0.number,cpe1_0.state,cpe1_0.street,cpe1_0.zip_code,cpe1_0.archived,cpe1_0.archived_at,cpe1_0.birth_date,cpe1_0.create_by_user_id,cpe1_0.document,cpe1_0.email,cpe1_0.first_name,cpe1_0.last_modified_at,cpe1_0.last_modified_by_user,cpe1_0.last_name,cpe1_0.loyalt_points,cpe1_0.phone,cpe1_0.promotion_notifications_allowed,cpe1_0.registered_at,cpe1_0.version from customer_persistence_entity cpe1_0 where cpe1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

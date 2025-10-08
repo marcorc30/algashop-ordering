@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.order.ShippingCostServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:46.940Z" hostname="marco-Inspiron-3583" time="0.143">
-  <properties/>
-  <testcase name="deveCalcular()" classname="com.algaworks.algashop.ordering.domain.model.order.ShippingCostServiceTest" time="0.143"/>
-  <system-out><![CDATA[2025-10-01T19:16:46.935-03:00  INFO 209006 --- [ordering] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.algaworks.algashop.ordering.domain.model.order.ShippingCostServiceTest]: ShippingCostServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-10-01T19:16:46.937-03:00  INFO 209006 --- [ordering] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.algaworks.algashop.ordering.OrderingApplication for test class com.algaworks.algashop.ordering.domain.model.order.ShippingCostServiceTest
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

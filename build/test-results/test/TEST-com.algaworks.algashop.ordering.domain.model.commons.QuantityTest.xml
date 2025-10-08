@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.algaworks.algashop.ordering.domain.model.commons.QuantityTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-10-01T22:16:44.040Z" hostname="marco-Inspiron-3583" time="0.004">
-  <properties/>
-  <testcase name="quando_criar_entity_com_valor_nulo_entao_deve_lancar_nullpointerexception()" classname="com.algaworks.algashop.ordering.domain.model.commons.QuantityTest" time="0.001"/>
-  <testcase name="quando_criar_quantity_com_valor_negativo_entao_valor_deve_lancar_excecao()" classname="com.algaworks.algashop.ordering.domain.model.commons.QuantityTest" time="0.001"/>
-  <testcase name="quando_somar_um_valor_ao_quantity_entao_deve_retornar_valor_somado()" classname="com.algaworks.algashop.ordering.domain.model.commons.QuantityTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
