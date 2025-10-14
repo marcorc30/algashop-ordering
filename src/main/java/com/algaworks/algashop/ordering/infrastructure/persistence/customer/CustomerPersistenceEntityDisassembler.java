@@ -3,6 +3,8 @@ package com.algaworks.algashop.ordering.infrastructure.persistence.customer;
 import com.algaworks.algashop.ordering.domain.model.commons.*;
 import com.algaworks.algashop.ordering.domain.model.customer.BirthDate;
 import com.algaworks.algashop.ordering.domain.model.customer.Customer;
+import com.algaworks.algashop.ordering.domain.model.customer.CustomerId;
+import com.algaworks.algashop.ordering.domain.model.customer.LoyaltPoints;
 
 public class CustomerPersistenceEntityDisassembler {
 
@@ -11,14 +13,20 @@ public class CustomerPersistenceEntityDisassembler {
         var address = getAddress(persistenceEntity);
 
 
-        return Customer.brandNew()
-                .phone(new Phone(persistenceEntity.getPhone()))
-                .email(new Email(persistenceEntity.getEmail()))
-                .birthDate(new BirthDate(persistenceEntity.getBirthDate()))
-                .document(new Document(persistenceEntity.getDocument()))
+        return Customer.existing()
+                .id(new CustomerId(persistenceEntity.getId()))
                 .fullName(new FullName(persistenceEntity.getFirstName(), persistenceEntity.getLastName()))
+                .birthDate(new BirthDate(persistenceEntity.getBirthDate()))
+                .email(new Email(persistenceEntity.getEmail()))
+                .phone(new Phone(persistenceEntity.getPhone()))
+                .document(new Document(persistenceEntity.getDocument()))
+                .loyaltyPoints(new LoyaltPoints(persistenceEntity.getLoyaltPoints()))
                 .promotionNotificationsAllowed(persistenceEntity.getPromotionNotificationsAllowed())
+                .archived(persistenceEntity.getArchived())
+                .registeredAt(persistenceEntity.getRegisteredAt())
+                .archivedAt(persistenceEntity.getArchivedAt())
                 .address(address)
+                .version(persistenceEntity.getVersion())
                 .build();
 
     }

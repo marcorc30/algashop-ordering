@@ -35,15 +35,16 @@ public class CustomerPersistenceProvider implements Customers {
 
     @Override
     public Optional<Customer> ofId(CustomerId customerId) {
-        Objects.requireNonNull(customerId);
-        Optional<CustomerPersistenceEntity> customerPersistenceEntity = repository.findById(customerId.value());
+//        Objects.requireNonNull(customerId);
+//        Optional<CustomerPersistenceEntity> customerPersistenceEntity = repository.findById(customerId.value());
+//
+//        Optional<Customer> customer = customerPersistenceEntity.map(cp -> disassembler.toDomainEntity(cp));
+//        return customer;
 
-        Optional<Customer> customer = customerPersistenceEntity.map(cp -> disassembler.toDomainEntity(cp));
+        return repository.findById(customerId.value())
+                .map(disassembler::toDomainEntity);
 
 
-//                .map(cp -> disassembler.toDomainEntity(cp));
-
-        return customer;
     }
 
     @Override

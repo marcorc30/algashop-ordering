@@ -5,6 +5,7 @@ import com.algaworks.algashop.ordering.application.utility.Mapper;
 import com.algaworks.algashop.ordering.domain.model.commons.FullName;
 import com.algaworks.algashop.ordering.domain.model.customer.BirthDate;
 import com.algaworks.algashop.ordering.domain.model.customer.Customer;
+import com.algaworks.algashop.ordering.domain.model.customer.CustomerId;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -13,6 +14,7 @@ import org.modelmapper.spi.MappingContext;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Configuration
 public class ModelMapperConfig implements Mapper {
@@ -53,6 +55,20 @@ public class ModelMapperConfig implements Mapper {
                 }
             };
 
+    private static final Converter<CustomerId, UUID> customerIdToUUID =
+            new Converter<CustomerId, UUID>() {
+                @Override
+                public UUID convert(MappingContext<CustomerId, UUID> context) {
+                    CustomerId customerId = context.getSource();
+                    if (customerId == null){
+                        return null;
+                    }
+
+                    return customerId.value();
+
+                }
+            };
+
 
     @Override
     public <T> T convert(Object object, Class<T> destinationType) {
@@ -73,6 +89,8 @@ public class ModelMapperConfig implements Mapper {
                 .addMappings(mapping -> mapping.using(fullNameToLastNameConverter)
                         .map(Customer::fullName, CustomerOutput::setLastName))
                 .addMappings(mapping -> mapping.using(birthDateToLocalDate)
-                        .map(Customer::birthDate, CustomerOutput::setBirthDate));
+                        .map(Customer::birthDate, CustomerOutput::setBirthDate))
+                .addMappings(mapping -> mapping.using(customerIdToUUID)
+                        .map(Customer::id, CustomerOutput::setId));
     }
 }

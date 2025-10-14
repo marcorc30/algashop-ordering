@@ -56,41 +56,56 @@ public class CustomerManagementApplicationService {
 
     }
 
-    @Transactional(readOnly = false)
+    @Transactional
+    public void update(UUID id, CustomerUpdateInput input){
+
+        Customer customer = customers.ofId(new CustomerId(id)).orElseThrow(() -> new CustomerNotFoundException());
+        AddressData address = input.getAddress();
+
+        customer.changeName(new FullName(input.getFirstName(), input.getLastName()));
+        customer.changePhone(new Phone(input.getPhone()));
+
+        if (Boolean.TRUE.equals(input.getPromotionNotificationsAllowed())){
+            customer.enablePromotionNotifications();
+        }else{
+            customer.disablePromotionNotifications();
+        }
+
+
+        customer.changeAddress(Address.builder()
+                .zipCode(new ZipCode(address.getZipCode()))
+                .state(address.getState())
+                .city(address.getCity())
+                .neighborhood(address.getNeighborhood())
+                .street(address.getStreet())
+                .number(address.getNumber())
+                .complement(address.getComplement())
+                .build()
+        );
+
+        customers.add(customer);
+
+    }
+
+    @Transactional(readOnly = true)
     public CustomerOutput findById(UUID id){
         Objects.requireNonNull(id);
 
-        Customer customer = customers.ofId(new CustomerId(id)).orElseThrow(() -> new CustomerNotFoundException());
+        Customer customer = customers.ofId(new CustomerId(id))
+                .orElseThrow(() -> new CustomerNotFoundException());
 
         return mapper.convert(customer, CustomerOutput.class);
 
 
-//        AddressData addressData = AddressData.builder()
-//                .state(customer.address().state())
-//                .city(customer.address().city())
-//                .street(customer.address().street())
-//                .complement(customer.address().complement())
-//                .zipCode(customer.address().zipCode().value())
-//                .neighborhood(customer.address().neighborhood())
-//                .number(customer.address().number())
-//                .build();
-//
-//        CustomerOutput customerOutput = CustomerOutput.builder()
-//                .id(customer.id().value())
-//                .firstName(customer.fullName().firstName())
-//                .lastName(customer.fullName().lastName())
-//                .email(customer.email().value())
-//                .phone(customer.phone().value())
-//                .document(customer.document().value())
-//                .loyaltPoints(customer.loyaltPoints().value())
-//                .birthDate(customer.birthDate().value())
-//                .promotionNotificationsAllowed(customer.promotionNotificationsAllowed())
-//                .registeredAt(customer.registeredAt())
-//                .archivedAt(customer.archivedAt())
-//                .address(addressData)
-//                .build();
+    }
 
-//        return customerOutput;
+    @Transactional
+    public void archive(UUID id){
+        Customer customer = customers.ofId(new CustomerId(id)).orElseThrow(() -> new CustomerNotFoundException());
+
+        customer.archive();
+
+        customers.add(customer);
 
     }
 

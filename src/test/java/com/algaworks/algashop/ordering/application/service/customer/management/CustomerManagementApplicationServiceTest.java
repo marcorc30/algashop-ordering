@@ -4,46 +4,39 @@ import com.algaworks.algashop.ordering.application.customer.management.CustomerM
 import com.algaworks.algashop.ordering.application.commons.AddressData;
 import com.algaworks.algashop.ordering.application.customer.management.CustomerInput;
 import com.algaworks.algashop.ordering.application.customer.management.CustomerOutput;
+import com.algaworks.algashop.ordering.application.customer.management.CustomerUpdateInput;
+import com.algaworks.algashop.ordering.application.utility.Mapper;
+import com.algaworks.algashop.ordering.domain.model.customer.Customer;
+import com.algaworks.algashop.ordering.domain.model.customer.CustomerId;
+import com.algaworks.algashop.ordering.domain.model.customer.CustomerTestDataBuilder;
 import com.algaworks.algashop.ordering.infrastructure.persistence.customer.CustomerPersistenceEntityDisassembler;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 
 @SpringBootTest
-@Import(CustomerPersistenceEntityDisassembler.class)
+@Transactional
+//@Import(CustomerPersistenceEntityDisassembler.class)
 class CustomerManagementApplicationServiceTest {
 
     @Autowired
     CustomerManagementApplicationService customerService;
 
+    @Autowired
+    Mapper mapper;
+
 
     @Test
     public void create(){
 
-        CustomerInput customerInput = CustomerInput.builder()
-                .email("teste@gmail.com")
-                .firstName("teste")
-                .lastName("da silva")
-                .promotionNotificationsAllowed(true)
-                .document("12346")
-                .phone("555-555-555")
-                .birthDate(LocalDate.now().minusYears(10))
-                .address(AddressData.builder()
-                        .street("street")
-                        .city("city")
-                        .complement("complement")
-                        .zipCode("55555")
-                        .number("55555")
-                        .neighborhood("teste")
-                        .state("state")
-                        .build())
-                .build();
+        CustomerInput customerInput = CustomerInputTestDataBuilder.aCustomer().build();
 
         UUID customerId = customerService.create(customerInput);
 
@@ -60,6 +53,56 @@ class CustomerManagementApplicationServiceTest {
 
 
     }
+
+//    @Test
+    public void update(){
+
+        CustomerInput customerInput = CustomerInputTestDataBuilder.aCustomer().build();
+        CustomerUpdateInput customerUpdateInput = CustomerUpdateInputTestDataBuilder.aUpdateCustomer().build();
+
+        UUID uuid = customerService.create(customerInput);
+
+        Assertions.assertThat(uuid).isNotNull();
+
+        customerService.update(uuid, customerUpdateInput);
+
+        CustomerOutput customerOutput = customerService.findById(uuid);
+
+        Assertions.assertThat(customerOutput.getPhone()).isEqualTo("555-555-666");
+
+
+    }
+
+//    @Test
+    public void shouldArchive(){
+
+        CustomerInput customerInput = CustomerInputTestDataBuilder.aCustomer().build();
+        UUID customerId = customerService.create(customerInput);
+
+        Assertions.assertThat(customerId).isNotNull();
+
+        customerService.archive(customerId);
+
+        CustomerOutput archivedCustomer = customerService.findById(customerId);
+
+        Assertions.assertThat(archivedCustomer)
+                .isNotNull()
+                .extracting(
+                        CustomerOutput::getFirstName,
+                        CustomerOutput::getLastName,
+                        CustomerOutput::getPhone,
+                        CustomerOutput::getDocument
+                ).containsExactly(
+                        "Anonymous",
+                        "Anonymous",
+                        "000-000-0000",
+                        "000-00-0000"
+                );
+
+
+    }
+
+
 
 
 }
